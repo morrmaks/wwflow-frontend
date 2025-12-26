@@ -53,8 +53,10 @@ function createAnimator(
   mouse: { x: number; y: number; tx: number; ty: number }
 ) {
   let raf: number;
+  let running = false;
 
   const animate = () => {
+    if (!running) return;
     material.uniforms.uTime.value += 0.003;
 
     mouse.x += (mouse.tx - mouse.x) * 0.08;
@@ -65,10 +67,26 @@ function createAnimator(
     raf = requestAnimationFrame(animate);
   };
 
-  animate();
+  const start = () => {
+    if (running) return;
+    console.log('start');
+    running = true;
+    animate();
+  };
+
+  const stop = () => {
+    if (!running) return;
+    console.log('stop');
+    running = false;
+    cancelAnimationFrame(raf);
+  };
+
+  start();
 
   return {
-    dispose: () => cancelAnimationFrame(raf)
+    start,
+    stop,
+    dispose: () => stop()
   };
 }
 
@@ -87,6 +105,17 @@ function createResizeHandler(renderer: THREE.WebGLRenderer) {
   };
 }
 
+function createThemeHandler(material: THREE.ShaderMaterial) {
+  let currentTheme: string | undefined;
+
+  return (theme?: string) => {
+    if (theme === currentTheme) return;
+
+    currentTheme = theme;
+    material.uniforms.uTheme.value = theme === 'dark' ? 1 : 0;
+  };
+}
+
 export function createLiquidScene(container: HTMLDivElement, theme?: string) {
   const scene = new THREE.Scene();
   const camera = createCamera();
@@ -100,9 +129,7 @@ export function createLiquidScene(container: HTMLDivElement, theme?: string) {
 
   const resize = createResizeHandler(renderer);
 
-  const setTheme = (theme?: string) => {
-    material.uniforms.uTheme.value = theme === 'dark' ? 1 : 0;
-  };
+  const setTheme = createThemeHandler(material);
 
   const setScroll = (scrollY: number) => {
     material.uniforms.uScroll.value = scrollY;
@@ -112,6 +139,8 @@ export function createLiquidScene(container: HTMLDivElement, theme?: string) {
     resize,
     setTheme,
     setScroll,
+    start: animator.start,
+    stop: animator.stop,
     dispose: () => {
       animator.dispose();
       mouseController.dispose();

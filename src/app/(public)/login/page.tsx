@@ -1,7 +1,13 @@
-export default function Main() {
+import { LoginForm } from '@/features/auth/login/loginForm';
+
+export default function LoginPage() {
   return (
-    <div className='flex min-h-screen items-center justify-center font-sans'>
-      <main className='flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 sm:items-start'></main>
+    <div className='flex items-center justify-center min-h-screen'>
+      <div className='w-full max-w-md space-y-8'>
+        <h2 className='text-2xl font-bold mb-2 text-center'>Welcome back</h2>
+        <p className='mx-auto text-base text-center text-muted-foreground'>Log in to you account</p>
+        <LoginForm />
+      </div>
     </div>
   );
 }

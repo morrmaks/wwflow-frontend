@@ -1,4 +1,5 @@
 import { useResizeObserver } from '@siberiacancode/reactuse';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
 import { useScrollActivity } from '@/shared/hooks/useScrollActivity';
@@ -9,10 +10,17 @@ import type { LiquidScene } from './createLiquidScene';
 import { createLiquidScene } from './createLiquidScene';
 
 export function useLiquidBackground() {
+  const pathname = usePathname();
   const sceneRef = useRef<LiquidScene | null>(null);
 
   const { resolvedTheme } = useThemeClient();
-  const { ref, entry } = useResizeObserver<HTMLDivElement>();
+  const { ref } = useResizeObserver<HTMLDivElement>({
+    onChange: ({ contentRect }) => sceneRef.current?.resize(contentRect.width, contentRect.height)
+  });
+
+  pathname === '/' ? sceneRef.current?.start() : sceneRef.current?.stop();
+
+  sceneRef.current?.setTheme(resolvedTheme);
 
   useScrollActivity(({ progressY }) => sceneRef.current?.setScroll(progressY));
 
@@ -25,12 +33,6 @@ export function useLiquidBackground() {
       sceneRef.current = null;
     };
   }, []);
-
-  useEffect(() => sceneRef.current?.setTheme(resolvedTheme), [resolvedTheme]);
-  useEffect(
-    () => entry && sceneRef.current?.resize(entry.contentRect.width, entry.contentRect.height),
-    [entry]
-  );
 
   return { ref };
 }

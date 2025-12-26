@@ -11,7 +11,7 @@ export default function Layout({
     <>
       <PublicHeader />
       <LiquidBackground />
-      {children}
+      <main className='min-h-screen font-sans'>{children}</main>
     </>
   );
 }
