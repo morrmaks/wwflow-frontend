@@ -33,9 +33,8 @@ function createMouseController(container: HTMLDivElement) {
     mouse.ty = 1 - (e.clientY - rect.top) / rect.height;
   };
 
-  if (window.matchMedia('(pointer: fine)').matches) {
+  if (window.matchMedia('(pointer: fine)').matches)
     window.addEventListener('mousemove', onMouseMove, { passive: true });
-  }
 
   return {
     mouse,
@@ -53,8 +52,10 @@ function createAnimator(
   mouse: { x: number; y: number; tx: number; ty: number }
 ) {
   let raf: number;
+  let running = false;
 
   const animate = () => {
+    if (!running) return;
     material.uniforms.uTime.value += 0.003;
 
     mouse.x += (mouse.tx - mouse.x) * 0.08;
@@ -65,14 +66,34 @@ function createAnimator(
     raf = requestAnimationFrame(animate);
   };
 
-  animate();
+  const start = () => {
+    if (running) return;
+    running = true;
+    animate();
+  };
+
+  const stop = () => {
+    if (!running) return;
+    running = false;
+    cancelAnimationFrame(raf);
+  };
+
+  const renderIfPaused = () => {
+    if (running) return;
+    renderer.render(scene, camera);
+  };
+
+  start();
 
   return {
-    dispose: () => cancelAnimationFrame(raf)
+    start,
+    stop,
+    renderIfPaused,
+    dispose: () => stop()
   };
 }
 
-function createResizeHandler(renderer: THREE.WebGLRenderer) {
+function createResizeHandler(renderer: THREE.WebGLRenderer, renderIfPaused: () => void) {
   let lastSize: string | null = null;
 
   return (width: number, height: number) => {
@@ -84,6 +105,21 @@ function createResizeHandler(renderer: THREE.WebGLRenderer) {
 
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, finalHeight, true);
+
+    renderIfPaused();
+  };
+}
+
+function createThemeHandler(material: THREE.ShaderMaterial, renderIfPaused: () => void) {
+  let currentTheme: string | undefined;
+
+  return (theme?: string) => {
+    if (theme === currentTheme) return;
+
+    currentTheme = theme;
+    material.uniforms.uTheme.value = theme === 'dark' ? 1 : 0;
+
+    renderIfPaused();
   };
 }
 
@@ -98,11 +134,9 @@ export function createLiquidScene(container: HTMLDivElement, theme?: string) {
   const mouseController = createMouseController(container);
   const animator = createAnimator(renderer, scene, camera, material, mouseController.mouse);
 
-  const resize = createResizeHandler(renderer);
+  const resize = createResizeHandler(renderer, animator.renderIfPaused);
 
-  const setTheme = (theme?: string) => {
-    material.uniforms.uTheme.value = theme === 'dark' ? 1 : 0;
-  };
+  const setTheme = createThemeHandler(material, animator.renderIfPaused);
 
   const setScroll = (scrollY: number) => {
     material.uniforms.uScroll.value = scrollY;
@@ -112,6 +146,8 @@ export function createLiquidScene(container: HTMLDivElement, theme?: string) {
     resize,
     setTheme,
     setScroll,
+    start: animator.start,
+    stop: animator.stop,
     dispose: () => {
       animator.dispose();
       mouseController.dispose();
