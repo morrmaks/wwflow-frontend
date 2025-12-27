@@ -33,9 +33,8 @@ function createMouseController(container: HTMLDivElement) {
     mouse.ty = 1 - (e.clientY - rect.top) / rect.height;
   };
 
-  if (window.matchMedia('(pointer: fine)').matches) {
+  if (window.matchMedia('(pointer: fine)').matches)
     window.addEventListener('mousemove', onMouseMove, { passive: true });
-  }
 
   return {
     mouse,
@@ -69,16 +68,19 @@ function createAnimator(
 
   const start = () => {
     if (running) return;
-    console.log('start');
     running = true;
     animate();
   };
 
   const stop = () => {
     if (!running) return;
-    console.log('stop');
     running = false;
     cancelAnimationFrame(raf);
+  };
+
+  const renderIfPaused = () => {
+    if (running) return;
+    renderer.render(scene, camera);
   };
 
   start();
@@ -86,11 +88,12 @@ function createAnimator(
   return {
     start,
     stop,
+    renderIfPaused,
     dispose: () => stop()
   };
 }
 
-function createResizeHandler(renderer: THREE.WebGLRenderer) {
+function createResizeHandler(renderer: THREE.WebGLRenderer, renderIfPaused: () => void) {
   let lastSize: string | null = null;
 
   return (width: number, height: number) => {
@@ -102,10 +105,12 @@ function createResizeHandler(renderer: THREE.WebGLRenderer) {
 
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, finalHeight, true);
+
+    renderIfPaused();
   };
 }
 
-function createThemeHandler(material: THREE.ShaderMaterial) {
+function createThemeHandler(material: THREE.ShaderMaterial, renderIfPaused: () => void) {
   let currentTheme: string | undefined;
 
   return (theme?: string) => {
@@ -113,6 +118,8 @@ function createThemeHandler(material: THREE.ShaderMaterial) {
 
     currentTheme = theme;
     material.uniforms.uTheme.value = theme === 'dark' ? 1 : 0;
+
+    renderIfPaused();
   };
 }
 
@@ -127,9 +134,9 @@ export function createLiquidScene(container: HTMLDivElement, theme?: string) {
   const mouseController = createMouseController(container);
   const animator = createAnimator(renderer, scene, camera, material, mouseController.mouse);
 
-  const resize = createResizeHandler(renderer);
+  const resize = createResizeHandler(renderer, animator.renderIfPaused);
 
-  const setTheme = createThemeHandler(material);
+  const setTheme = createThemeHandler(material, animator.renderIfPaused);
 
   const setScroll = (scrollY: number) => {
     material.uniforms.uScroll.value = scrollY;

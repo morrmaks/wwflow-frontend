@@ -17,7 +17,7 @@ export function InputPassword({ ...props }: InputPasswordProps) {
         className='rounded-xl'
         type={showPassword ? 'text' : 'password'}
         autoComplete='current-password'
-        placeholder='••••••••'
+        placeholder={props.placeholder || 'you password'}
         {...props}
       />
       <Button
