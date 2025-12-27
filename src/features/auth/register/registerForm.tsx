@@ -1,5 +1,7 @@
 'use client';
 
+import type { ChangeEvent } from 'react';
+
 import { useMutation } from '@apollo/client/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
@@ -25,7 +27,7 @@ import { registerFormSchema } from './registerFormSchema';
 const initialFormState: RegisterFormValues = {
   email: '',
   password: '',
-  currentPassword: ''
+  confirmPassword: ''
 };
 
 export function RegisterForm() {
@@ -39,9 +41,15 @@ export function RegisterForm() {
     mode: 'onChange'
   });
 
+  function onPasswordChange(e: ChangeEvent<HTMLInputElement>, onChange: (value: string) => void) {
+    onChange(e.target.value);
+
+    if (!form.getValues('confirmPassword')) return;
+    form.trigger('confirmPassword');
+  }
+
   function onSubmit(data: RegisterFormValues) {
     try {
-      toast.error('Something went wrong');
       register({ variables: data });
     } catch {
       toast.error('Something went wrong');
@@ -77,7 +85,10 @@ export function RegisterForm() {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <InputPassword {...field} />
+                    <InputPassword
+                      {...field}
+                      onChange={(e) => onPasswordChange(e, field.onChange)}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -91,12 +102,12 @@ export function RegisterForm() {
                 <FormItem>
                   <FormLabel>Confirm password</FormLabel>
                   <FormControl>
-                    <InputPassword {...field} />
+                    <InputPassword {...field} placeholder='repeat you password' />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
-              name='currentPassword'
+              name='confirmPassword'
               control={form.control}
             />
           </CardContent>
