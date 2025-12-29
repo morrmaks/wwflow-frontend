@@ -11,8 +11,7 @@
     "format": "prettier --write .",
     "prepare": "husky",
     "typecheck": "tsc --noEmit",
-    "codegen": "graphql-codegen",
-    "generate-gql": "graphql-codegen -r dotenv/config --config ./src/shared/api/graphql/codegen.ts && prettier --write ./src/shared/api/graphql/__generated__.ts"
+    "generate-gql": "graphql-codegen -r dotenv/config --config ./src/common/api/graphql/codegen.ts && prettier --write ./src/common/api/graphql/__generated__.ts"
   },
   "dependencies": {
     "@apollo/client": "^4.0.11",

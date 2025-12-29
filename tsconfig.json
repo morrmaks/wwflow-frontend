@@ -35,7 +35,7 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts",
-    "src/shared/components/marketingCard/config/marketingCardsConfig.tsч"
+    "src/modules/marketing/config/marketingCardsConfig.tsч"
   ],
   "exclude": ["node_modules"]
 }

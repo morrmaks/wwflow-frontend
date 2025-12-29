@@ -1,10 +1,13 @@
-import { ApolloProvider } from '@/shared/providers/apolloProvider';
-import { ThemeProvider } from '@/shared/providers/themeProvider';
+import { ApolloProvider } from '@/common/providers/apolloProvider';
+import { AuthProvider } from '@/common/providers/authProvider';
+import { ThemeProvider } from '@/common/providers/themeProvider';
 
 export function Provider({ children }: { children: React.ReactNode }) {
   return (
     <ApolloProvider>
-      <ThemeProvider>{children}</ThemeProvider>
+      <ThemeProvider>
+        <AuthProvider>{children}</AuthProvider>
+      </ThemeProvider>
     </ApolloProvider>
   );
 }
