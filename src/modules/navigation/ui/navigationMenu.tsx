@@ -1,19 +1,15 @@
 import Link from 'next/link';
 
-import { ROUTES } from '@/common/constants/routes';
 import { Button } from '@/common/ui/button';
 import { SheetClose } from '@/common/ui/sheet';
 
-const sideMenuItems = [
-  { label: 'Boards', href: ROUTES.appBoards },
-  { label: 'Canvas', href: ROUTES.appCanvas }
-];
+import { navigationMenuConfig } from '../model/navigationMenuConfig';
 
 function NavigationMenu() {
   return (
     <nav>
       <ul className='flex flex-col items-start'>
-        {sideMenuItems.map((item) => (
+        {navigationMenuConfig.map((item) => (
           <li key={item.href} className='w-full'>
             <SheetClose asChild>
               <Button asChild className='w-full justify-start rounded-none' variant='ghost'>

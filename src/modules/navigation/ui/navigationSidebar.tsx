@@ -1,5 +1,3 @@
-'use client';
-
 import { MenuIcon } from 'lucide-react';
 
 import { Button } from '@/common/ui/button';
