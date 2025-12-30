@@ -21,7 +21,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'WWFlow',
+  title: {
+    template: 'WWFlow | %s',
+    default: 'WWFlow'
+  },
   description: 'The complete platform to organize your work'
 };
 

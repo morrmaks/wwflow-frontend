@@ -2,6 +2,7 @@ import { useResizeObserver } from '@siberiacancode/reactuse';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
+import { ROUTES } from '@/common/constants/routes';
 import { useScrollActivity } from '@/common/hooks/useScrollActivity';
 import { useThemeClient } from '@/common/hooks/useThemeClient';
 
@@ -18,7 +19,7 @@ export function useLiquidBackground() {
     onChange: ({ contentRect }) => sceneRef.current?.resize(contentRect.width, contentRect.height)
   });
 
-  pathname === '/' ? sceneRef.current?.start() : sceneRef.current?.stop();
+  pathname === ROUTES.main ? sceneRef.current?.start() : sceneRef.current?.stop();
 
   sceneRef.current?.setTheme(resolvedTheme);
 

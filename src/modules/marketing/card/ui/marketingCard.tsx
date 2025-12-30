@@ -13,7 +13,7 @@ export function MarketingCard({ icon, title, description }: MarketingCardProps) 
         <span className='w-12 h-12 mb-3 rounded-lg bg-primary/10 flex items-center justify-center'>
           {icon}
         </span>
-        <CardTitle className=''>{title}</CardTitle>
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <p>{description}</p>

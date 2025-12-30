@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { AuthContext } from '../providers/authProvider';
+import { AuthContext, AuthStatus } from '../providers/authProvider';
 
 function useAuth() {
   const ctx = useContext(AuthContext);
@@ -12,9 +12,9 @@ function useAuth() {
   return {
     status,
     user,
-    isAuth: status === 'auth',
-    isGuest: status === 'guest',
-    isLoading: status === 'loading'
+    isAuth: status === AuthStatus.auth,
+    isGuest: status === AuthStatus.guest,
+    isLoading: status === AuthStatus.loading
   };
 }
 

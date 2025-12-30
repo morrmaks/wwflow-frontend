@@ -2,13 +2,19 @@
 
 import Link from 'next/link';
 
+import { ROUTES } from '@/common/constants/routes';
+import { useAuth } from '@/common/hooks/useAuth';
 import { useScrollActivity } from '@/common/hooks/useScrollActivity';
 import { cn } from '@/common/lib/utils';
 import { Button } from '@/common/ui/button';
+import { Logo } from '@/common/ui/logo';
+import { NavigationSidebar } from '@/modules/navigation';
 import { ThemeDropdown } from '@/modules/theme';
+import { UserMenu } from '@/modules/user';
 
 export function Header() {
   const isScrolling = useScrollActivity(2000);
+  const { isAuth } = useAuth();
 
   return (
     <header
@@ -20,14 +26,19 @@ export function Header() {
       )}
     >
       <div className='w-full mx-auto flex justify-between h-20 max-w-7xl items-center px-6'>
-        <Link href='/' className='text-xl font-bold pointer-events-auto'>
-          WWFlow
-        </Link>
+        {isAuth && <NavigationSidebar />}
+        <Logo />
         <div className='flex items-center gap-4 pointer-events-auto'>
-          <ThemeDropdown />
-          <Button asChild variant='default'>
-            <Link href='/auth/login'>Log in</Link>
-          </Button>
+          {isAuth ? (
+            <UserMenu />
+          ) : (
+            <>
+              <ThemeDropdown />
+              <Button asChild variant='default'>
+                <Link href={ROUTES.authLogin}>Log in</Link>
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </header>

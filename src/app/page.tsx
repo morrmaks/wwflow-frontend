@@ -1,9 +1,5 @@
-import { ArrowRightIcon } from 'lucide-react';
-import Link from 'next/link';
-
-import { Button } from '@/common/ui/button';
 import { MotionReveal } from '@/common/ui/motion';
-import { MarketingSection } from '@/modules/marketing';
+import { HeroAction, MarketingSection } from '@/modules/marketing';
 
 export default function Main() {
   return (
@@ -17,12 +13,7 @@ export default function Main() {
             Manage projects with powerful boards and unleash creativity with our canvas tools. Built
             for teams that value clarity and speed.
           </p>
-          <Button asChild className='py-4' size='lg' variant='default'>
-            <Link href='/auth/login'>
-              Get started
-              <ArrowRightIcon className='ml-1 h-4 w-4' />
-            </Link>
-          </Button>
+          <HeroAction />
         </div>
       </MotionReveal>
       <MotionReveal direction='up'>

@@ -13,15 +13,15 @@ export function ThemeTabs() {
 
   return (
     <Tabs className='w-fit' value={theme ?? 'system'} onValueChange={(value) => setTheme(value)}>
-      <TabsList>
-        <TabsTrigger aria-label='System theme' value='system'>
-          <Monitor className='h-4 w-4' />
+      <TabsList className='h-7 p-0 rounded-full'>
+        <TabsTrigger aria-label='System theme' className='h-7 w-7 p-0 rounded-full' value='system'>
+          <Monitor className='h-3 w-3' />
         </TabsTrigger>
-        <TabsTrigger aria-label='Light theme' value='light'>
-          <Sun className='h-4 w-4' />
+        <TabsTrigger aria-label='Light theme' className='h-7 w-7 p-0 rounded-full' value='light'>
+          <Sun className='h-3 w-3' />
         </TabsTrigger>
-        <TabsTrigger aria-label='Dark theme' value='dark'>
-          <Moon className='h-4 w-4' />
+        <TabsTrigger aria-label='Dark theme' className='h-7 w-7 p-0 rounded-full' value='dark'>
+          <Moon className='h-3 w-3' />
         </TabsTrigger>
       </TabsList>
     </Tabs>

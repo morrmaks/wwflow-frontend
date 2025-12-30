@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-import { isMobileDevice } from '@/common/lib/utils';
+import { isMobileDevice } from '@/common/lib/device';
 
 import { createLiquidMaterial } from './createLiquidMaterial';
 

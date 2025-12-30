@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 
+import { ROUTES } from '@/common/constants/routes';
 import { Button } from '@/common/ui/button';
 import { Card, CardContent, CardFooter } from '@/common/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/common/ui/form';
@@ -111,7 +112,7 @@ export function RegisterForm() {
             <div className='flex items-center justify-center'>
               <p className='text-sm text-muted-foreground'>Already have an account?</p>
               <Button asChild type='button' variant='link'>
-                <Link href='/auth/login'>Log in</Link>
+                <Link href={ROUTES.authLogin}>Log in</Link>
               </Button>
             </div>
           </CardFooter>
