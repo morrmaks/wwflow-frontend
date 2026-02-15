@@ -12,7 +12,7 @@ const config: CodegenConfig = {
         reactApolloVersion: 4,
         defaultScalarType: 'unknown',
         skipTypeNameForRoot: true,
-        nonOptionalTypename: false,
+        nonOptionalTypename: true,
         avoidOptionals: false
       }
     }

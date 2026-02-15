@@ -1,0 +1,3 @@
+mutation DeleteCard($boardId: ID!, $cardId: ID!) {
+  deleteCard(boardId: $boardId, cardId: $cardId)
+}

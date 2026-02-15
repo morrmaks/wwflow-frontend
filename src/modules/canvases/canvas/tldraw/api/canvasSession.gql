@@ -1,0 +1,3 @@
+subscription CanvasSession($id: ID!) {
+  canvasSession(id: $id)
+}

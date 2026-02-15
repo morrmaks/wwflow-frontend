@@ -1,0 +1,5 @@
+mutation CreateCanvas($name: String!, $inviteEmails: [String!], $previewImage: Upload) {
+  createCanvas(name: $name, inviteEmails: $inviteEmails, previewImage: $previewImage) {
+    id
+  }
+}

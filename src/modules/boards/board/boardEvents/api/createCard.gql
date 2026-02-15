@@ -1,0 +1,17 @@
+mutation CreateCard(
+  $boardId: ID!
+  $clientId: ID!
+  $title: String!
+  $container: CardContainer!
+  $columnId: ID
+  $index: Int!
+) {
+  createCard(
+    boardId: $boardId
+    clientId: $clientId
+    title: $title
+    container: $container
+    columnId: $columnId
+    index: $index
+  )
+}

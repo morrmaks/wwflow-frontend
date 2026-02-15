@@ -1,13 +1,24 @@
 import type { Metadata } from 'next';
 
+import { CanvasesSection, CreateCanvasDialog } from '@/modules/canvases';
+
 export const metadata: Metadata = {
   title: 'Canvas'
 };
 
-export default function Canvas() {
+export default function CanvasPage() {
   return (
-    <div className='flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black'>
-      <main className='flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start'></main>
+    <div className='page-padding pt-8'>
+      <div className='flex justify-between items-center gap-4'>
+        <div>
+          <h2 className='text-3xl font-bold'>Canvas</h2>
+          <p className='text-md text-muted-foreground mt-1'>
+            Create and collaborate on visual ideas
+          </p>
+        </div>
+        <CreateCanvasDialog />
+      </div>
+      <CanvasesSection />
     </div>
   );
 }

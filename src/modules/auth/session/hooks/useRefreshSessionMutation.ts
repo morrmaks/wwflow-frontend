@@ -5,7 +5,7 @@ import type {
   RefreshSessionMutationVariables
 } from '@/common/api/graphql/__generated__';
 
-import { forceLogout } from '@/common/api/client/session';
+import { forceLogout } from '@/common/api/apolloClient/client';
 import { RefreshSessionDocument } from '@/common/api/graphql/__generated__';
 
 function useRefreshSessionMutation() {

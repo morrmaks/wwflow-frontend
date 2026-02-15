@@ -1,0 +1,5 @@
+query SearchUserEmails($query: String!) {
+  searchUserEmails(query: $query) {
+    email
+  }
+}

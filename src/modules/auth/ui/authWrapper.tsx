@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/common/ui/card';
+import { Separator } from '@/common/ui/separator';
 
 interface AuthFooterProps {
   actionHref: string;
@@ -30,7 +31,9 @@ function AuthWrapper({ children, heading, description, footer }: AuthWrapperProp
         <CardTitle className='text-2xl text-center'>{heading}</CardTitle>
         {description && <CardDescription className='text-center'>{description}</CardDescription>}
       </CardHeader>
-      <div className='bg-muted h-[1] mx-6'></div>
+      <div className='mx-6'>
+        <Separator />
+      </div>
       <CardContent className='pt-6 space-y-4'>{children}</CardContent>
       <CardFooter className='flex items-center justify-center'>
         <p className='text-sm text-muted-foreground'>{footer.text}</p>

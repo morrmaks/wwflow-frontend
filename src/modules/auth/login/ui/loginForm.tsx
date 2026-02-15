@@ -29,9 +29,9 @@ export function LoginForm() {
     mode: 'onChange'
   });
 
-  function onSubmit(data: LoginFormValues) {
+  const onSubmit = (data: LoginFormValues) => {
     login({ variables: data });
-  }
+  };
 
   return (
     <AuthWrapper

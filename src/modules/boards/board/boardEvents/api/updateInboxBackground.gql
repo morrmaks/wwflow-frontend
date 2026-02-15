@@ -1,0 +1,3 @@
+mutation UpdateInboxBackground($boardId: ID!, $background: BoardBackground!) {
+  updateInboxBackground(boardId: $boardId, background: $background)
+}

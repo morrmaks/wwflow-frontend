@@ -1,0 +1,3 @@
+mutation UpdatePanelLayout($boardId: ID!, $panelLayout: PanelLayoutInput!) {
+  updatePanelLayout(boardId: $boardId, panelLayout: $panelLayout)
+}

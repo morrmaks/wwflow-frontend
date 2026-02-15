@@ -1,0 +1,3 @@
+mutation CreateColumn($boardId: ID!, $clientId: ID!, $title: String!, $index: Int!) {
+  createColumn(boardId: $boardId, clientId: $clientId, title: $title, index: $index)
+}

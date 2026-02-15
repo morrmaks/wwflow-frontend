@@ -1,0 +1,84 @@
+subscription BoardEvents($boardId: ID!) {
+  boardEvents(boardId: $boardId) {
+    __typename
+
+    ... on BoardRenamed {
+      revision
+      title
+    }
+
+    ... on BoardBackgroundChanged {
+      revision
+      background
+    }
+
+    ... on InboxBackgroundChanged {
+      revision
+      background
+    }
+
+    ... on ColumnCreated {
+      revision
+      index
+      clientId
+      column {
+        id
+        title
+      }
+    }
+
+    ... on ColumnMoved {
+      revision
+      columnId
+      toIndex
+    }
+
+    ... on ColumnRenamed {
+      revision
+      columnId
+      title
+    }
+
+    ... on ColumnDeleted {
+      revision
+      columnId
+    }
+
+    ... on CardCreated {
+      revision
+      index
+      container
+      columnId
+      clientId
+      card {
+        id
+        title
+        completed
+      }
+    }
+
+    ... on CardMoved {
+      revision
+      cardId
+      to {
+        container
+        columnId
+        index
+      }
+    }
+
+    ... on CardUpdated {
+      revision
+      cardId
+      patch {
+        title
+        completed
+      }
+    }
+
+    ... on CardDeleted {
+      revision
+      cardId
+    }
+  }
+}

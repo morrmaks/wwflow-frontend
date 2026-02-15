@@ -26,13 +26,17 @@ const initialValue: AuthContextValue = {
 
 function resolveAuth(loading: boolean, error?: unknown, me?: GetMeQuery['me']): AuthContextValue {
   if (loading) return { status: AuthStatus.loading, user: null };
-  if (error || !me) return { status: AuthStatus.guest, user: null };
+  if (error || !me) return { status: AuthStatus.auth, user: null };
   return { status: AuthStatus.auth, user: me };
 }
 
 const AuthContext = createContext<AuthContextValue>(initialValue);
 
-function AuthProvider({ children }: { children: React.ReactNode }) {
+interface AuthProviderProps {
+  children: React.ReactNode;
+}
+
+function AuthProvider({ children }: AuthProviderProps) {
   const { data, loading, error } = useGetMeQuery();
 
   const value = resolveAuth(loading, error, data?.me);

@@ -1,0 +1,5 @@
+mutation DeleteCanvas($canvasId: ID!) {
+  deleteCanvas(canvasId: $canvasId) {
+    id
+  }
+}

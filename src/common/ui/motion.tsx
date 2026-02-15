@@ -1,5 +1,6 @@
 'use client';
 
+import { Slot } from '@radix-ui/react-slot';
 import { useIntersectionObserver } from '@siberiacancode/reactuse';
 import clsx from 'clsx';
 import { useRef } from 'react';
@@ -34,7 +35,7 @@ function MotionReveal({ direction = 'up', once, className, children }: RevealPro
   return (
     <MotionPrimitive once={once}>
       {({ ref, isActive }) => (
-        <div
+        <Slot
           ref={ref}
           className={clsx(
             'motion-reveal',
@@ -44,7 +45,7 @@ function MotionReveal({ direction = 'up', once, className, children }: RevealPro
           )}
         >
           {children}
-        </div>
+        </Slot>
       )}
     </MotionPrimitive>
   );
@@ -56,9 +57,9 @@ function MotionFade({ once, className, children }: FadeProps) {
   return (
     <MotionPrimitive once={once}>
       {({ ref, isActive }) => (
-        <div ref={ref} className={clsx('motion-fade', isActive && 'is-active', className)}>
+        <Slot ref={ref} className={clsx('motion-fade', isActive && 'is-active', className)}>
           {children}
-        </div>
+        </Slot>
       )}
     </MotionPrimitive>
   );

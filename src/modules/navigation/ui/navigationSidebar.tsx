@@ -1,5 +1,6 @@
-import { MenuIcon } from 'lucide-react';
+import { LayoutGridIcon } from 'lucide-react';
 
+import { cn } from '@/common/lib/utils';
 import { Button } from '@/common/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/common/ui/sheet';
 
@@ -9,12 +10,16 @@ function NavigationSidebar() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className='rounded-full h-9 w-9 pointer-events-auto' variant='ghost'>
-          <MenuIcon />
+        <Button className='h-4 w-4 pointer-events-auto' size='icon' variant='ghost'>
+          <LayoutGridIcon />
         </Button>
       </SheetTrigger>
       <SheetContent
-        className='rounded-2xl top-1/2 -translate-y-1/2 h-[98vh] w-64 left-4'
+        className={cn(
+          'sm:rounded-2xl rounded-none',
+          'top-1/2 -translate-y-1/2',
+          'sm:h-[98vh] h-full w-64 sm:left-4 left-0'
+        )}
         side='left'
       >
         <SheetHeader>

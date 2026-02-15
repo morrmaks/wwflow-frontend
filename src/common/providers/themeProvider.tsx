@@ -1,6 +1,10 @@
 import { ThemeProvider as NextThemeProvider } from 'next-themes';
 
-function ThemeProvider({ children }: { children: React.ReactNode }) {
+interface ThemeProviderProps {
+  children: React.ReactNode;
+}
+
+function ThemeProvider({ children }: ThemeProviderProps) {
   return (
     <NextThemeProvider
       enableSystem

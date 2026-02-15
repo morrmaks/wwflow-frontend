@@ -1,0 +1,3 @@
+mutation UpdateBoardBackground($boardId: ID!, $background: BoardBackground!) {
+  updateBoardBackground(boardId: $boardId, background: $background)
+}

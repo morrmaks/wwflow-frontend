@@ -32,16 +32,19 @@ export function RegisterForm() {
     mode: 'onChange'
   });
 
-  function onPasswordChange(e: ChangeEvent<HTMLInputElement>, onChange: (value: string) => void) {
+  const onPasswordChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    onChange: (value: string) => void
+  ) => {
     onChange(e.target.value);
 
     if (!form.getValues('confirmPassword')) return;
     form.trigger('confirmPassword');
-  }
+  };
 
-  function onSubmit(data: RegisterFormValues) {
+  const onSubmit = (data: RegisterFormValues) => {
     register({ variables: data });
-  }
+  };
 
   return (
     <AuthWrapper

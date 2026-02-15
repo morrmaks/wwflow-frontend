@@ -1,0 +1,7 @@
+fragment CanvasCard on CanvasListItem {
+  id
+  name
+  updatedAt
+  previewSrc
+  invitedEmails
+}
