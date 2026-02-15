@@ -1,3 +1,10 @@
+scalar JSON
+scalar Upload
+
+enum OrderBy {
+  ORDER_INDEX
+}
+
 type User {
   id: ID!
   email: String!
@@ -7,13 +14,306 @@ type AuthResponse {
   user: User!
 }
 
+type UserEmailLookup {
+  email: String!
+}
+
+type Canvas {
+  id: ID!
+  name: String!
+  updatedAt: String!
+  previewSrc: String!
+  invitedEmails: [String!]!
+}
+
+type CanvasListItem {
+  id: ID!
+  name: String!
+  updatedAt: String!
+  previewSrc: String!
+  invitedEmails: [String!]!
+}
+
+type CreateCanvasPayload {
+  id: ID!
+}
+
+type DeleteCanvasPayload {
+  id: ID!
+}
+
+type UpdateCanvasPayload {
+  id: ID!
+  name: String!
+  previewSrc: String!
+}
+
+type UpdateCanvasInvitesPayload {
+  id: ID!
+  invitedEmails: [String!]!
+}
+
+type BoardListItem {
+  id: ID!
+  name: String!
+  updatedAt: String!
+  cardsCount: Int!
+  previewSrc: String!
+  invitedEmails: [String!]!
+}
+
+type Board {
+  id: ID!
+  title: String!
+  panelLayout: PanelLayout!
+  inboxBackground: BoardBackground!
+  boardBackground: BoardBackground!
+  revision: Int!
+
+  inboxCards(orderBy: OrderBy): [BoardCard!]!
+  columns(orderBy: OrderBy): [BoardColumn!]!
+}
+
+type PanelLayout {
+  inbox: Float
+  board: Float
+}
+
+type BoardCard {
+  id: ID!
+  title: String!
+  completed: Boolean!
+  orderIndex: Float!
+}
+
+type BoardColumn {
+  id: ID!
+  title: String!
+  orderIndex: Float!
+  cards(orderBy: OrderBy): [BoardCard!]!
+}
+
+type CreateBoardPayload {
+  id: ID!
+}
+
+type DeleteBoardPayload {
+  id: ID!
+}
+
+type UpdateBoardPayload {
+  id: ID!
+  name: String!
+  previewSrc: String!
+}
+
+type UpdateBoardInvitesPayload {
+  id: ID!
+  invitedEmails: [String!]!
+}
+
+type BoardRenamed {
+  revision: Int!
+  title: String!
+}
+
+type BoardBackgroundChanged {
+  revision: Int!
+  background: BoardBackground!
+}
+
+type InboxBackgroundChanged {
+  revision: Int!
+  background: BoardBackground!
+}
+
+enum BoardBackground {
+  BLUE
+  ORANGE
+  GREEN
+  RED
+  PURPLE
+  GREY
+
+  GRADIENT_BUBBLE
+  GRADIENT_SNOW
+  GRADIENT_OCEAN
+  GRADIENT_CRYSTAL
+  GRADIENT_RAINBOW
+  GRADIENT_PEACH
+  GRADIENT_FLOWER
+  GRADIENT_EARTH
+  GRADIENT_ALIEN
+  GRADIENT_VOLCANO
+}
+
+type ColumnSnapshot {
+  id: ID!
+  title: String!
+}
+
+type ColumnCreated {
+  revision: Int!
+  clientId: ID!
+  column: ColumnSnapshot!
+  index: Int!
+}
+
+type ColumnMoved {
+  revision: Int!
+  columnId: ID
+  toIndex: Int!
+}
+
+type ColumnRenamed {
+  revision: Int!
+  columnId: ID
+  title: String!
+}
+
+type ColumnDeleted {
+  revision: Int!
+  columnId: ID
+}
+
+enum CardContainer {
+  INBOX
+  COLUMN
+}
+
+type CardSnapshot {
+  id: ID!
+  title: String!
+  completed: Boolean!
+}
+
+type CardCreated {
+  revision: Int!
+  clientId: ID!
+  card: CardSnapshot!
+  container: CardContainer!
+  columnId: ID
+  index: Int!
+}
+
+type CardMoved {
+  revision: Int!
+  cardId: ID!
+  to: CardMoveTarget!
+}
+
+type CardMoveTarget {
+  container: CardContainer!
+  columnId: ID
+  index: Int!
+}
+
+type CardPatchPayload {
+  title: String
+  completed: Boolean
+}
+
+type CardUpdated {
+  revision: Int!
+  cardId: ID!
+  patch: CardPatchPayload!
+}
+
+type CardDeleted {
+  revision: Int!
+  cardId: ID!
+}
+
+input MoveTargetInput {
+  container: CardContainer!
+  columnId: ID
+  index: Int!
+}
+
+input CardPatchInput {
+  title: String
+  completed: Boolean
+}
+
+input PanelLayoutInput {
+  inbox: Float
+  board: Float
+}
+
+union BoardEvent =
+  | BoardRenamed
+  | BoardBackgroundChanged
+  | InboxBackgroundChanged
+  | ColumnCreated
+  | ColumnMoved
+  | ColumnRenamed
+  | ColumnDeleted
+  | CardCreated
+  | CardMoved
+  | CardUpdated
+  | CardDeleted
+
 type Mutation {
-  login(email: String!, password: String!): AuthResponse!
-  register(email: String!, password: String!): AuthResponse!
   logout: Boolean!
   refreshSession: Boolean!
+  login(email: String!, password: String!): AuthResponse!
+  register(email: String!, password: String!): AuthResponse!
+
+  createCanvas(name: String!, inviteEmails: [String!], previewImage: Upload): CreateCanvasPayload!
+  deleteCanvas(canvasId: ID!): DeleteCanvasPayload!
+  updateCanvas(
+    canvasId: ID!
+    name: String
+    previewImage: Upload
+    removePreview: Boolean!
+  ): UpdateCanvasPayload!
+  renameCanvas(canvasId: ID!, name: String!): Boolean!
+  updateCanvasInvites(
+    canvasId: ID!
+    add: [String!]!
+    remove: [String!]!
+  ): UpdateCanvasInvitesPayload!
+  sendCanvasDiff(canvasId: ID!, diff: JSON!): Boolean!
+
+  createBoard(name: String!, inviteEmails: [String!], previewImage: Upload): CreateBoardPayload!
+  deleteBoard(boardId: ID!): DeleteBoardPayload!
+  updateBoard(
+    boardId: ID!
+    name: String
+    previewImage: Upload
+    removePreview: Boolean!
+  ): UpdateBoardPayload!
+  renameBoard(boardId: ID!, title: String!): Boolean!
+  updateBoardInvites(boardId: ID!, add: [String!]!, remove: [String!]!): UpdateBoardInvitesPayload!
+  updateBoardBackground(boardId: ID!, background: BoardBackground!): Boolean!
+  updateInboxBackground(boardId: ID!, background: BoardBackground!): Boolean!
+  updatePanelLayout(boardId: ID!, panelLayout: PanelLayoutInput!): Boolean!
+  createColumn(boardId: ID!, clientId: ID!, title: String!, index: Int!): Boolean!
+  moveColumn(boardId: ID!, columnId: ID!, toIndex: Int!): Boolean!
+  renameColumn(boardId: ID!, columnId: ID!, title: String!): Boolean!
+  deleteColumn(boardId: ID!, columnId: ID!): Boolean!
+  createCard(
+    boardId: ID!
+    clientId: ID!
+    title: String!
+    container: CardContainer!
+    columnId: ID
+    index: Int!
+  ): Boolean!
+  moveCard(boardId: ID!, cardId: ID!, to: MoveTargetInput!): Boolean!
+  updateCard(boardId: ID!, cardId: ID!, patch: CardPatchInput!): Boolean!
+  deleteCard(boardId: ID!, cardId: ID!): Boolean!
 }
 
 type Query {
   me: User
+  boardList: [BoardListItem!]
+  board(id: ID!): Board!
+  canvasList: [CanvasListItem!]
+  searchUserEmails(query: String!): [UserEmailLookup!]!
+}
+
+type Subscription {
+  canvasSession(id: ID!): JSON!
+  boardEvents(boardId: ID!): BoardEvent!
 }

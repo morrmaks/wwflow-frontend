@@ -1,0 +1,3 @@
+mutation SendCanvasDiff($canvasId: ID!, $diff: JSON!) {
+  sendCanvasDiff(canvasId: $canvasId, diff: $diff)
+}

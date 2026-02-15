@@ -1,0 +1,3 @@
+mutation MoveCard($boardId: ID!, $cardId: ID!, $to: MoveTargetInput!) {
+  moveCard(boardId: $boardId, cardId: $cardId, to: $to)
+}

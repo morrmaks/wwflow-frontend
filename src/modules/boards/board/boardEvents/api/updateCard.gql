@@ -1,0 +1,3 @@
+mutation UpdateCard($boardId: ID!, $cardId: ID!, $patch: CardPatchInput!) {
+  updateCard(boardId: $boardId, cardId: $cardId, patch: $patch)
+}

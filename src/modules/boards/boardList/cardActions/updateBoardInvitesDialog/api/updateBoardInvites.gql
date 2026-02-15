@@ -1,0 +1,6 @@
+mutation UpdateBoardInvites($boardId: ID!, $add: [String!]!, $remove: [String!]!) {
+  updateBoardInvites(boardId: $boardId, add: $add, remove: $remove) {
+    id
+    invitedEmails
+  }
+}

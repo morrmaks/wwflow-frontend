@@ -1,19 +1,22 @@
 import { useMutation } from '@apollo/client/react';
-import { toast } from 'sonner';
 
 import type {
   RegisterMutation,
   RegisterMutationVariables
 } from '@/common/api/graphql/__generated__';
 
-import { revalidateGetMeQuery } from '@/common/api/client/session';
+import { revalidateGetMeQuery } from '@/common/api/apolloClient/client';
 import { RegisterDocument } from '@/common/api/graphql/__generated__';
+import { appToast } from '@/common/lib/toast';
 
 function useRegisterMutation() {
   return useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument, {
-    onCompleted: (data) => revalidateGetMeQuery(data.register.user),
+    onCompleted: (data) => {
+      revalidateGetMeQuery(data.register.user);
+      appToast.success('Registration successful');
+    },
     onError: (error) => {
-      toast.error('Registration error:', { description: error.message });
+      appToast.error('Registration error', error.message);
     }
   });
 }

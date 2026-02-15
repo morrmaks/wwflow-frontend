@@ -14,7 +14,6 @@ function InputPassword({ ...props }: InputPasswordProps) {
   return (
     <div className='relative'>
       <Input
-        className='rounded-xl'
         type={showPassword ? 'text' : 'password'}
         autoComplete='current-password'
         placeholder={props.placeholder || 'you password'}

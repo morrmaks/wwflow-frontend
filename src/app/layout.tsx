@@ -40,7 +40,9 @@ export default function RootLayout({
         <Provider>
           <Header />
           <LiquidBackground />
-          {children}
+          <main className='container min-h-screen font-sans flex flex-col mx-auto max-w-7xl'>
+            {children}
+          </main>
           <Toaster />
         </Provider>
       </body>

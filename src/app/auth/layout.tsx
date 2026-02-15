@@ -7,7 +7,7 @@ export default function AuthLayout({
 }>) {
   return (
     <PublicGuard>
-      <main className='min-h-screen font-sans'>{children}</main>
+      <div className='flex-1 flex items-center justify-center '>{children}</div>
     </PublicGuard>
   );
 }

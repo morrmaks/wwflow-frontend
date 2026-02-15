@@ -1,16 +1,19 @@
 import { useMutation } from '@apollo/client/react';
-import { toast } from 'sonner';
 
 import type { LogoutMutation, LogoutMutationVariables } from '@/common/api/graphql/__generated__';
 
-import { forceLogout } from '@/common/api/client/session';
+import { forceLogout } from '@/common/api/apolloClient/client';
 import { LogoutDocument } from '@/common/api/graphql/__generated__';
+import { appToast } from '@/common/lib/toast';
 
 function useLogoutMutation() {
   return useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, {
-    onCompleted: () => forceLogout(),
+    onCompleted: () => {
+      forceLogout();
+      appToast.success('Logout successful');
+    },
     onError: (error) => {
-      toast.error('Logout error:', { description: error.message });
+      appToast.error('Logout error', error.message);
     }
   });
 }

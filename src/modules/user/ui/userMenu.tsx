@@ -2,7 +2,7 @@ import { LogOut, Settings, User } from 'lucide-react';
 import Link from 'next/link';
 
 import { ROUTES } from '@/common/constants/routes';
-import { Button } from '@/common/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@/common/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,9 +20,10 @@ function UserMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button aria-label='Toggle theme' className='rounded-full' size='icon'>
-          фи
-        </Button>
+        <Avatar>
+          <AvatarImage></AvatarImage>
+          <AvatarFallback>фи</AvatarFallback>
+        </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
         <Link href={ROUTES.appProfile}>

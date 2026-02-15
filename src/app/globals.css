@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import 'tldraw/tldraw.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -16,6 +17,7 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
+  --color-chart-6: var(--chart-6);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
@@ -47,6 +49,8 @@
 }
 
 :root {
+  --header-height: 80px;
+  --canvas-title-height: 56px;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -71,6 +75,7 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
+  --chart-6: oklch(58.631% 0.18493 255.139);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -79,6 +84,29 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* board solid backgrounds */
+  --board-solid-blue: oklch(0.64 0.18 240);
+  --board-solid-orange: oklch(0.74 0.18 60);
+  --board-solid-green: oklch(0.68 0.17 150);
+  --board-solid-red: oklch(0.62 0.21 30);
+  --board-solid-purple: oklch(0.62 0.2 300);
+  --board-solid-pink: oklch(0.75 0.18 350);
+  --board-solid-lime: oklch(0.78 0.2 140);
+  --board-solid-sky: oklch(0.78 0.16 220);
+  --board-solid-grey: oklch(0.6 0 0);
+
+  /* board gradient backgrounds */
+  --board-gradient-bubble: linear-gradient(135deg, oklch(0.933 0.031 257), oklch(0.883 0.059 251));
+  --board-gradient-snow: linear-gradient(135deg, oklch(0.618 0.143 245), oklch(0.748 0.137 247));
+  --board-gradient-ocean: linear-gradient(135deg, oklch(0.453 0.165 259), oklch(0.652 0.19 253));
+  --board-gradient-crystal: linear-gradient(135deg, oklch(0.524 0.131 309), oklch(0.66 0.137 304));
+  --board-gradient-rainbow: linear-gradient(135deg, oklch(0.606 0.219 293), oklch(0.656 0.212 354));
+  --board-gradient-peach: linear-gradient(135deg, oklch(0.697 0.166 45), oklch(0.825 0.171 80));
+  --board-gradient-flower: linear-gradient(135deg, oklch(0.752 0.135 3), oklch(0.847 0.086 9));
+  --board-gradient-earth: linear-gradient(135deg, oklch(0.656 0.096 182), oklch(0.804 0.083 182));
+  --board-gradient-alien: linear-gradient(135deg, oklch(0.42 0.067 248), oklch(0.48 0.067 225));
+  --board-gradient-volcano: linear-gradient(135deg, oklch(0.596 0.216 27), oklch(0.629 0.189 37));
 }
 
 .dark {
@@ -105,14 +133,159 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
+  --chart-6: oklch(56.755% 0.21763 259.108);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary: oklch(52.117% 0.22231 262.234);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* board solid backgrounds */
+  --board-solid-blue: oklch(0.42 0.14 240);
+  --board-solid-orange: oklch(0.48 0.15 60);
+  --board-solid-green: oklch(0.44 0.14 150);
+  --board-solid-red: oklch(0.42 0.17 30);
+  --board-solid-purple: oklch(0.42 0.16 300);
+  --board-solid-pink: oklch(0.5 0.15 350);
+  --board-solid-lime: oklch(0.5 0.16 140);
+  --board-solid-sky: oklch(0.5 0.13 220);
+  --board-solid-grey: oklch(0.35 0 0);
+
+  /* board gradient backgrounds */
+  --board-gradient-bubble: linear-gradient(135deg, oklch(0.35 0.08 240), oklch(0.28 0.07 250));
+  --board-gradient-snow: linear-gradient(135deg, oklch(0.32 0.1 240), oklch(0.38 0.12 220));
+  --board-gradient-ocean: linear-gradient(135deg, oklch(0.25 0.12 250), oklch(0.35 0.14 230));
+  --board-gradient-crystal: linear-gradient(135deg, oklch(0.28 0.12 300), oklch(0.38 0.14 290));
+  --board-gradient-rainbow: linear-gradient(135deg, oklch(0.38 0.16 270), oklch(0.42 0.18 340));
+  --board-gradient-peach: linear-gradient(135deg, oklch(0.38 0.14 45), oklch(0.45 0.16 70));
+  --board-gradient-flower: linear-gradient(135deg, oklch(0.42 0.14 350), oklch(0.48 0.15 10));
+  --board-gradient-earth: linear-gradient(135deg, oklch(0.34 0.1 170), oklch(0.42 0.12 150));
+  --board-gradient-alien: linear-gradient(135deg, oklch(0.22 0.04 250), oklch(0.3 0.06 230));
+  --board-gradient-volcano: linear-gradient(135deg, oklch(0.28 0.14 30), oklch(0.38 0.18 40));
+}
+
+.tl-theme__light {
+  /* Canvas */
+  --tl-color-snap: hsl(0, 76%, 60%);
+  --tl-color-selection-fill: hsl(210, 100%, 56%, 24%);
+  --tl-color-selection-stroke: hsl(214, 84%, 56%);
+  --tl-color-background: hsl(210, 20%, 98%);
+  --tl-color-brush-fill: hsl(0, 0%, 56%, 10.2%);
+  --tl-color-brush-stroke: hsl(0, 0%, 56%, 25.1%);
+  --tl-color-grid: hsl(0, 0%, 43%);
+  /* UI */
+  --tl-color-low: var(--card);
+  --tl-color-low-border: var(--border);
+  --tl-color-culled: hsl(204, 14%, 93%);
+  --tl-color-muted-none: hsl(0, 0%, 0%, 0%);
+  --tl-color-muted-0: hsl(0, 0%, 0%, 2%);
+  --tl-color-muted-1: hsl(0, 0%, 0%, 10%);
+  --tl-color-muted-2: hsl(0, 0%, 0%, 4.3%);
+  --tl-color-hint: hsl(0, 0%, 0%, 5.5%);
+  --tl-color-overlay: hsl(0, 0%, 0%, 20%);
+  --tl-color-divider: var(--border);
+
+  --tl-color-panel: var(--card);
+  --tl-color-panel-contrast: var(--border);
+  --tl-color-panel-overlay: var(--popover);
+  --tl-color-panel-transparent: transparent;
+
+  --tl-color-selected: hsl(214, 84%, 56%);
+  --tl-color-selected-contrast: hsl(0, 0%, 100%);
+  --tl-color-focus: hsl(219, 65%, 50%);
+  --tl-color-tooltip: hsla(200, 14%, 4%, 1);
+  /* Text */
+  --tl-color-text: var(--foreground);
+  --tl-color-text-0: var(--foreground);
+  --tl-color-text-1: var(--muted-foreground);
+  --tl-color-text-3: var(--muted-foreground);
+  --tl-color-text-shadow: hsl(0, 0%, 100%);
+  --tl-color-text-highlight: hsl(52, 100%, 50%);
+  --tl-color-text-highlight-p3: color(display-p3 0.972 0.8205 0.05);
+  /* Named */
+  --tl-color-primary: hsl(214, 84%, 56%);
+  --tl-color-success: hsl(123, 46%, 34%);
+  --tl-color-info: hsl(201, 98%, 41%);
+  --tl-color-warning: hsl(27, 98%, 47%);
+  --tl-color-danger: hsl(0, 90%, 43%);
+  --tl-color-laser: hsl(0, 100%, 50%);
+  /* Shadows */
+  --tl-shadow-1: 0px 1px 2px hsl(0, 0%, 0%, 25%), 0px 1px 3px hsl(0, 0%, 0%, 9%);
+  --tl-shadow-2:
+    0px 0px 2px hsl(0, 0%, 0%, 16%), 0px 2px 3px hsl(0, 0%, 0%, 24%),
+    0px 2px 6px hsl(0, 0%, 0%, 0.1), inset 0px 0px 0px 1px var(--tl-color-panel-contrast);
+  --tl-shadow-3:
+    0px 1px 2px hsl(0, 0%, 0%, 28%), 0px 2px 6px hsl(0, 0%, 0%, 14%),
+    inset 0px 0px 0px 1px var(--tl-color-panel-contrast);
+  --tl-shadow-4:
+    0px 0px 3px hsl(0, 0%, 0%, 19%), 0px 5px 4px hsl(0, 0%, 0%, 16%),
+    0px 2px 16px hsl(0, 0%, 0%, 6%), inset 0px 0px 0px 1px var(--tl-color-panel-contrast);
+
+  --tl-radius-2: var(--radius-sm);
+  --tl-radius-3: var(--radius-md);
+}
+
+.tl-theme__dark {
+  /* Canvas */
+  --tl-color-snap: hsl(0, 76%, 60%);
+  --tl-color-selection-fill: hsl(209, 100%, 57%, 20%);
+  --tl-color-selection-stroke: hsl(214, 84%, 56%);
+  --tl-color-background: hsl(240, 5%, 6.5%);
+  --tl-color-brush-fill: hsl(0, 0%, 71%, 5.1%);
+  --tl-color-brush-stroke: hsl(0, 0%, 71%, 25.1%);
+  --tl-color-grid: hsl(0, 0%, 40%);
+  /* UI */
+  --tl-color-low: var(--card);
+  --tl-color-low-border: var(--border);
+  --tl-color-culled: hsl(210, 11%, 19%);
+  --tl-color-muted-none: hsl(0, 0%, 100%, 0%);
+  --tl-color-muted-0: hsl(0, 0%, 100%, 2%);
+  --tl-color-muted-1: hsl(0, 0%, 100%, 10%);
+  --tl-color-muted-2: hsl(0, 0%, 100%, 5%);
+  --tl-color-hint: hsl(0, 0%, 100%, 7%);
+  --tl-color-overlay: hsl(0, 0%, 0%, 50%);
+  --tl-color-divider: var(--border);
+
+  --tl-color-panel: var(--card);
+  --tl-color-panel-contrast: var(--border);
+  --tl-color-panel-overlay: var(--popover);
+  --tl-color-panel-transparent: transparent;
+
+  --tl-color-selected: hsl(217, 89%, 61%);
+  --tl-color-selected-contrast: hsl(0, 0%, 100%);
+  --tl-color-focus: hsl(217, 76%, 80%);
+  --tl-color-tooltip: hsla(0, 0%, 100%, 1);
+  /* Text */
+  --tl-color-text: var(--foreground);
+  --tl-color-text-0: var(--foreground);
+  --tl-color-text-1: var(--muted-foreground);
+  --tl-color-text-3: var(--muted-foreground);
+  --tl-color-text-shadow: hsl(210, 13%, 18%);
+  --tl-color-text-highlight: hsl(52, 100%, 41%);
+  --tl-color-text-highlight-p3: color(display-p3 0.8078 0.6225 0.0312);
+  /* Named */
+  --tl-color-primary: hsl(214, 84%, 56%);
+  --tl-color-success: hsl(123, 38%, 57%);
+  --tl-color-info: hsl(199, 92%, 56%);
+  --tl-color-warning: hsl(36, 100%, 57%);
+  --tl-color-danger: hsl(0, 82%, 66%);
+  --tl-color-laser: hsl(0, 100%, 50%);
+  /* Shadows */
+  --tl-shadow-1:
+    0px 1px 2px hsl(0, 0%, 0%, 16.1%), 0px 1px 3px hsl(0, 0%, 0%, 22%),
+    inset 0px 0px 0px 1px var(--tl-color-panel-contrast);
+  --tl-shadow-2:
+    0px 1px 3px hsl(0, 0%, 0%, 66.6%), 0px 2px 6px hsl(0, 0%, 0%, 33%),
+    inset 0px 0px 0px 1px var(--tl-color-panel-contrast);
+  --tl-shadow-3:
+    0px 1px 3px hsl(0, 0%, 0%, 50%), 0px 2px 12px hsl(0, 0%, 0%, 50%),
+    inset 0px 0px 0px 1px var(--tl-color-panel-contrast);
+
+  --tl-radius-2: var(--radius-sm);
+  --tl-radius-3: var(--radius-md);
 }
 
 @layer base {
@@ -124,6 +297,74 @@
   }
 }
 
+@layer utilities {
+  .page-padding {
+    @apply pt-[var(--header-height)] pb-4 px-4 sm:px-6;
+  }
+
+  .page-padding-top {
+    @apply pt-[var(--header-height)];
+  }
+
+  /* solid */
+  .bg-board-blue {
+    background-color: var(--board-solid-blue);
+  }
+  .bg-board-orange {
+    background-color: var(--board-solid-orange);
+  }
+  .bg-board-green {
+    background-color: var(--board-solid-green);
+  }
+  .bg-board-red {
+    background-color: var(--board-solid-red);
+  }
+  .bg-board-purple {
+    background-color: var(--board-solid-purple);
+  }
+  .bg-board-grey {
+    background-color: var(--board-solid-grey);
+  }
+
+  /* gradients */
+  .bg-board-bubble {
+    background-image: var(--board-gradient-bubble);
+  }
+  .bg-board-snow {
+    background-image: var(--board-gradient-snow);
+  }
+  .bg-board-ocean {
+    background-image: var(--board-gradient-ocean);
+  }
+  .bg-board-crystal {
+    background-image: var(--board-gradient-crystal);
+  }
+  .bg-board-rainbow {
+    background-image: var(--board-gradient-rainbow);
+  }
+  .bg-board-peach {
+    background-image: var(--board-gradient-peach);
+  }
+  .bg-board-flower {
+    background-image: var(--board-gradient-flower);
+  }
+  .bg-board-earth {
+    background-image: var(--board-gradient-earth);
+  }
+  .bg-board-alien {
+    background-image: var(--board-gradient-alien);
+  }
+  .bg-board-volcano {
+    background-image: var(--board-gradient-volcano);
+  }
+}
+
+/* Utility canvas page classes */
+.tl-container .tl-watermark_SEE-LICENSE {
+  display: none !important;
+}
+
+/* Motion utilities for animations */
 .motion-reveal {
   transform: translateY(60px);
   opacity: 0;

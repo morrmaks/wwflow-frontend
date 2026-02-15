@@ -42,8 +42,8 @@ export function createLiquidMaterial(theme: string | undefined) {
         // cursor influence
         float dist = distance(uv, uMouse);
         float radius = 0.35;
-        float falloff = smoothstep(radius, 0.0, dist);
-        vec2 offset = (uv - uMouse) * falloff * 2.0;
+        float falloff = smoothstep(radius, 0.2, dist);
+        vec2 offset = (uv - uMouse) * falloff * 3.0;
 
         float n =
           sin(p.x + offset.x + uTime) +
