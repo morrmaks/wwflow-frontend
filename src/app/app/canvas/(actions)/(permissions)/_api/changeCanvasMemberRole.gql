@@ -1,0 +1,8 @@
+mutation ChangeCanvasMemberRole($input: ChangeMemberRoleInput!) {
+  changeCanvasMemberRole(input: $input) {
+    canvasId
+    updatedMembers {
+      ...CanvasMemberFields
+    }
+  }
+}

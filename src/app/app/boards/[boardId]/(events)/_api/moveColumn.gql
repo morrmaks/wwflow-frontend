@@ -1,0 +1,8 @@
+mutation MoveColumn($boardId: ID!, $clientMutationId: ID!, $columnId: ID!, $toIndex: Int!) {
+  moveColumn(
+    boardId: $boardId
+    clientMutationId: $clientMutationId
+    columnId: $columnId
+    toIndex: $toIndex
+  )
+}

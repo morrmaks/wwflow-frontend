@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { Board } from '@/modules/boards';
+import { Board } from '@src/app/app/boards';
 
 interface Params {
   boardId: string;

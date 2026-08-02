@@ -1,0 +1,6 @@
+mutation RevokeBoardInvite($inviteId: ID!) {
+  revokeBoardInvite(inviteId: $inviteId) {
+    inviteId
+    resourceId
+  }
+}

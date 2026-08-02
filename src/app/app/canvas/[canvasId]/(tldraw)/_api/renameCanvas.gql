@@ -1,0 +1,3 @@
+mutation RenameCanvas($canvasId: ID!, $title: String!) {
+  renameCanvas(canvasId: $canvasId, title: $title)
+}

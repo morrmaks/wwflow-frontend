@@ -3,7 +3,7 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import * as React from 'react';
 
-import { cn } from '@/common/lib/utils';
+import { cn } from '@src/common/lib/utils';
 
 function Tabs({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Root>) {
   return (
@@ -19,7 +19,7 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
   return (
     <TabsPrimitive.List
       className={cn(
-        'bg-muted text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]',
+        'inline-flex h-10 w-fit items-center justify-center rounded-xl border-[3px] border-brutal-outline bg-muted p-1 text-muted-foreground',
         className
       )}
       data-slot='tabs-list'
@@ -32,10 +32,10 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
   return (
     <TabsPrimitive.Trigger
       className={cn(
-        'inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
-        'hover:bg-accent hover:text-accent-foreground',
-        'data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        'inline-flex h-7 items-center justify-center rounded-lg border-[3px] border-transparent px-3 text-sm font-bold transition-[background-color,border-color,color,box-shadow] duration-150 ease-out',
+        'hover:text-accent-foreground',
+        'data-[state=active]:border-brutal-outline data-[state=active]:bg-background data-[state=active]:text-foreground',
+        'focus-visible:border-ring focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50',
         className
       )}
       data-slot='tabs-trigger'
@@ -47,7 +47,10 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
 function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Content>) {
   return (
     <TabsPrimitive.Content
-      className={cn('flex-1 outline-none', className)}
+      className={cn(
+        'flex-1 rounded-xl border-[3px] border-brutal-outline bg-card p-4 text-card-foreground outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',
+        className
+      )}
       data-slot='tabs-content'
       {...props}
     />

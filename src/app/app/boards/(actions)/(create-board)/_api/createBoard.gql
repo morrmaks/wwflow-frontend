@@ -1,0 +1,5 @@
+mutation CreateBoard($title: String!, $previewUrl: Upload) {
+  createBoard(title: $title, previewUrl: $previewUrl) {
+    ...BoardListFields
+  }
+}

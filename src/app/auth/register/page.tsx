@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { RegisterForm } from '@/modules/auth';
+import { RegisterForm } from '@src/app/auth';
 
 export const metadata: Metadata = {
   title: 'Register'

@@ -3,7 +3,7 @@
 import { useCopy } from '@siberiacancode/reactuse';
 import { CheckIcon, CopyIcon } from 'lucide-react';
 
-import { cn } from '@/common/lib/utils';
+import { cn } from '@src/common/lib/utils';
 
 import { Button } from './button';
 
@@ -26,7 +26,7 @@ function CopyAction({ value, children, delay = 1500, className }: CopyActionProp
       onClick={() => copy(value)}
     >
       {copied ? (
-        <CheckIcon className='h-4 w-4 text-chart-2' />
+        <CheckIcon className='h-4 w-4 text-chart-2 stroke-[3]' />
       ) : (
         <CopyIcon className='h-4 w-4 text-muted-foreground' />
       )}

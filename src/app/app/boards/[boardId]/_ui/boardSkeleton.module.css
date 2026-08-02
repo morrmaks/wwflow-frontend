@@ -1,0 +1,35 @@
+.animatedCard {
+  animation: board-card-skeleton-stretch 2.8s ease-in-out infinite;
+}
+
+.inboxCardDelay {
+  animation-delay: -1.4s;
+}
+
+.columnCardDelay0 {
+  animation-delay: 0s;
+}
+
+.columnCardDelay1 {
+  animation-delay: -0.45s;
+}
+
+.columnCardDelay2 {
+  animation-delay: -0.9s;
+}
+
+@keyframes board-card-skeleton-stretch {
+  0%,
+  18% {
+    height: 48px;
+  }
+
+  50%,
+  68% {
+    height: 100%;
+  }
+
+  100% {
+    height: 48px;
+  }
+}

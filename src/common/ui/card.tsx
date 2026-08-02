@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { cn } from '@/common/lib/utils';
+import { cn } from '@src/common/lib/utils';
 
 function Card({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       className={cn(
-        'bg-card text-card-foreground flex flex-col gap-6 rounded-2xl border py-6 shadow-sm',
+        'flex flex-col gap-6 rounded-xl border-[3px] border-brutal-outline bg-card py-6 text-card-foreground',
         className
       )}
       data-slot='card'
@@ -31,7 +31,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
 function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
-      className={cn('leading-none font-semibold', className)}
+      className={cn('text-lg leading-none font-bold', className)}
       data-slot='card-title'
       {...props}
     />
@@ -41,7 +41,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
 function CardDescription({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
-      className={cn('text-muted-foreground text-sm', className)}
+      className={cn('text-sm text-muted-foreground', className)}
       data-slot='card-description'
       {...props}
     />

@@ -1,0 +1,5 @@
+query BoardSnapshot($boardId: ID!) {
+  board(boardId: $boardId) {
+    ...BoardSnapshot
+  }
+}

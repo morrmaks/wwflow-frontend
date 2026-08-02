@@ -1,0 +1,5 @@
+query BoardPermissions($boardId: ID!) {
+  boardPermissions(boardId: $boardId) {
+    ...BoardPermissionsFields
+  }
+}

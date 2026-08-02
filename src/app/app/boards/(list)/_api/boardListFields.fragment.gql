@@ -1,0 +1,12 @@
+fragment BoardListFields on BoardListItem {
+  id
+  title
+  previewUrl
+  updatedAt
+  membersCount
+  myRole
+  myMemberId
+  canEdit
+  canDelete
+  canManagePermissions
+}

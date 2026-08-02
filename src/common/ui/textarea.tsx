@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { cn } from '@/common/lib/utils';
+import { cn } from '@src/common/lib/utils';
 
 function Textarea({ className, ...props }: React.ComponentProps<'textarea'>) {
   return (
     <textarea
       className={cn(
-        'border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
+        'flex field-sizing-content min-h-24 w-full rounded-lg border-[3px] border-brutal-outline bg-card px-3 py-2 text-base text-card-foreground [box-shadow:none] transition-[background-color,border-color,box-shadow,color] duration-150 ease-out outline-none placeholder:text-muted-foreground hover:[box-shadow:var(--shadow-brutal-sm)] focus-visible:border-ring focus-visible:[box-shadow:var(--shadow-brutal)] focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:bg-destructive/10 aria-invalid:[box-shadow:var(--shadow-brutal-sm)] disabled:cursor-not-allowed disabled:bg-muted disabled:opacity-60 disabled:[box-shadow:none] md:text-sm',
         className
       )}
       data-slot='textarea'

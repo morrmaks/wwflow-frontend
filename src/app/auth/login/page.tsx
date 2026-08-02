@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { LoginForm } from '@/modules/auth';
+import { LoginForm } from '@src/app/auth';
 
 export const metadata: Metadata = {
   title: 'Login'

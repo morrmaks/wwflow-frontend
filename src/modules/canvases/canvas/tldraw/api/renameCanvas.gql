@@ -1,3 +1,0 @@
-mutation RenameCanvas($canvasId: ID!, $name: String!) {
-  renameCanvas(canvasId: $canvasId, name: $name)
-}

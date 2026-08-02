@@ -1,0 +1,10 @@
+fragment BoardPermissionsFields on BoardPermissionsItem {
+  id
+  myRole
+  members {
+    ...BoardMemberFields
+  }
+  invites {
+    ...InviteFields
+  }
+}

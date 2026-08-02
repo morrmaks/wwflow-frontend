@@ -1,0 +1,6 @@
+mutation RevokeCanvasInvite($inviteId: ID!) {
+  revokeCanvasInvite(inviteId: $inviteId) {
+    inviteId
+    resourceId
+  }
+}

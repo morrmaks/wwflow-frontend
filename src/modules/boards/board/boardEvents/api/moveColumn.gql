@@ -1,3 +1,0 @@
-mutation MoveColumn($boardId: ID!, $columnId: ID!, $toIndex: Int!) {
-  moveColumn(boardId: $boardId, columnId: $columnId, toIndex: $toIndex)
-}

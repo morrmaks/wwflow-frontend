@@ -1,5 +1,0 @@
-mutation CreateBoard($name: String!, $inviteEmails: [String!], $previewImage: Upload) {
-  createBoard(name: $name, inviteEmails: $inviteEmails, previewImage: $previewImage) {
-    id
-  }
-}

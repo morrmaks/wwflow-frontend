@@ -1,0 +1,5 @@
+mutation InviteCanvasUser($input: InviteUserInput!) {
+  inviteCanvasUser(input: $input) {
+    ...InviteFields
+  }
+}

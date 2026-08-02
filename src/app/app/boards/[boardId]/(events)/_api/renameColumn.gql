@@ -1,0 +1,8 @@
+mutation RenameColumn($boardId: ID!, $clientMutationId: ID!, $columnId: ID!, $title: String!) {
+  renameColumn(
+    boardId: $boardId
+    clientMutationId: $clientMutationId
+    columnId: $columnId
+    title: $title
+  )
+}

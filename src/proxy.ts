@@ -3,11 +3,11 @@ import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 import { ROUTE_SEGMENTS, ROUTES } from './common/constants/routes';
-import { COOKIE_KEYS } from './common/constants/storage';
+import { COOKIE_TOKEN_KEYS } from './common/constants/storage';
 
 export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  const hasToken = req.cookies.get(COOKIE_KEYS.accessToken);
+  const hasToken = req.cookies.get(COOKIE_TOKEN_KEYS.accessToken);
 
   const isAuth = pathname.startsWith(ROUTE_SEGMENTS.auth);
   const isPrivate = pathname.startsWith(ROUTE_SEGMENTS.app);

@@ -1,0 +1,53 @@
+
+> wwflow-frontend@0.1.0 mock-server
+> npx mcs
+
+[32m🎉 Flat Mock Server is running at http://localhost:4000[39m
+Request context keys: [ 'orm' ]
+Request keys: [
+  '_events',              '_readableState',
+  '_maxListeners',        'socket',
+  'httpVersionMajor',     'httpVersionMinor',
+  'httpVersion',          'complete',
+  'rawHeaders',           'rawTrailers',
+  'joinDuplicateHeaders', 'aborted',
+  'upgrade',              'url',
+  'method',               'statusCode',
+  'statusMessage',        'client',
+  '_consuming',           '_dumped',
+  'next',                 'baseUrl',
+  'originalUrl',          '_parsedUrl',
+  'params',               'query',
+  'res',                  'body',
+  'length',               '_eventsCount',
+  'id',                   'timestamp',
+  'graphQL',              'context',
+  'cookies',              'user',
+  'route'
+]
+Storage found: false
+Using ORM methods as fallback
+Request context keys: [ 'orm' ]
+Request keys: [
+  '_events',              '_readableState',
+  '_maxListeners',        'socket',
+  'httpVersionMajor',     'httpVersionMinor',
+  'httpVersion',          'complete',
+  'rawHeaders',           'rawTrailers',
+  'joinDuplicateHeaders', 'aborted',
+  'upgrade',              'url',
+  'method',               'statusCode',
+  'statusMessage',        'client',
+  '_consuming',           '_dumped',
+  'next',                 'baseUrl',
+  'originalUrl',          '_parsedUrl',
+  'params',               'query',
+  'res',                  'body',
+  'length',               '_eventsCount',
+  'id',                   'timestamp',
+  'graphQL',              'context',
+  'cookies',              'user',
+  'route'
+]
+Storage found: false
+Using ORM methods as fallback

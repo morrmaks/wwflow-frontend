@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { CanvasesSection, CreateCanvasDialog } from '@/modules/canvases';
+import { CanvasesSection, CreateCanvasModal } from '@src/app/app/canvas';
 
 export const metadata: Metadata = {
   title: 'Canvas'
@@ -16,7 +16,7 @@ export default function CanvasPage() {
             Create and collaborate on visual ideas
           </p>
         </div>
-        <CreateCanvasDialog />
+        <CreateCanvasModal />
       </div>
       <CanvasesSection />
     </div>

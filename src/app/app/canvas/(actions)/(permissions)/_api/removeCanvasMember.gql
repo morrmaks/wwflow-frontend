@@ -1,0 +1,7 @@
+mutation RemoveCanvasMember($memberId: ID!) {
+  removeCanvasMember(memberId: $memberId) {
+    resourceId
+    removedMemberId
+    removedWasSelf
+  }
+}

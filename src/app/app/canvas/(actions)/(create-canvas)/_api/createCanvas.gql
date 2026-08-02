@@ -1,0 +1,5 @@
+mutation CreateCanvas($title: String!, $previewUrl: Upload) {
+  createCanvas(title: $title, previewUrl: $previewUrl) {
+    ...CanvasListFields
+  }
+}

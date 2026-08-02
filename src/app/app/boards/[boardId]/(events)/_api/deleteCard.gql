@@ -1,0 +1,3 @@
+mutation DeleteCard($boardId: ID!, $clientMutationId: ID!, $cardId: ID!) {
+  deleteCard(boardId: $boardId, clientMutationId: $clientMutationId, cardId: $cardId)
+}

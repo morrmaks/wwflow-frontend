@@ -1,0 +1,29 @@
+fragment BoardSnapshot on Board {
+  id
+  title
+  panelLayout {
+    inbox
+    board
+  }
+  inboxBackground
+  boardBackground
+  revision
+  inboxCards(orderBy: ORDER_INDEX) {
+    id
+    title
+    completed
+    position
+  }
+  columns(orderBy: ORDER_INDEX) {
+    id
+    title
+    position
+
+    cards(orderBy: ORDER_INDEX) {
+      id
+      title
+      completed
+      position
+    }
+  }
+}

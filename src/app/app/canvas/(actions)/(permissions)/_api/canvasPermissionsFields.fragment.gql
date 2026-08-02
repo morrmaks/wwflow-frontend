@@ -1,0 +1,10 @@
+fragment CanvasPermissionsFields on CanvasPermissionsItem {
+  id
+  myRole
+  members {
+    ...CanvasMemberFields
+  }
+  invites {
+    ...InviteFields
+  }
+}

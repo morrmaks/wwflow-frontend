@@ -1,0 +1,335 @@
+.global-intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+  transform-origin: center;
+}
+
+.global-intro-loader.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.global-intro-loader.closing {
+  animation: intro-exit 0.7s cubic-bezier(0.65, 0.05, 0.36, 1) forwards;
+}
+
+@keyframes intro-exit {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes loader-elastic-flow {
+  0% {
+    transform: translate(0px, 50px) scale(1, 1);
+    opacity: 0;
+  }
+
+  6% {
+    transform: translate(0px, -6px) scale(1.05, 0.92);
+    opacity: 1;
+  }
+  9% {
+    transform: translate(0px, 0px) scale(0.94, 1.06);
+  }
+  12% {
+    transform: translate(0px, 0px) scale(1, 1);
+  }
+
+  33% {
+    transform: translate(68px, 0px) scale(0.92, 1.08);
+  }
+  37% {
+    transform: translate(60px, 0px) scale(1.04, 0.96);
+  }
+  42% {
+    transform: translate(65px, 0px) scale(1, 1);
+  }
+
+  63% {
+    transform: translate(133px, 0px) scale(0.92, 1.08);
+  }
+  67% {
+    transform: translate(125px, 0px) scale(1.04, 0.96);
+  }
+  72% {
+    transform: translate(130px, 0px) scale(1, 1);
+    opacity: 1;
+  }
+
+  94% {
+    transform: translate(120px, 50px) scale(1, 1);
+  }
+
+  100% {
+    transform: translate(0px, 50px) scale(1, 1);
+    opacity: 0;
+  }
+}
+
+.loader-card-animate {
+  animation: loader-elastic-flow 2s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+  transform-origin: center;
+  border: 1px solid color-mix(in oklab, var(--muted) 100%, transparent);
+  border-radius: var(--radius-sm);
+}
+
+.loader-column {
+  min-width: 60px;
+  height: 100%;
+  background-color: color-mix(in oklab, var(--muted) 30%, transparent);
+  border: 1px solid color-mix(in oklab, var(--muted) 100%, transparent);
+  border-radius: var(--radius-lg);
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+:global(.dark) .loader-column {
+  border-color: color-mix(in oklab, var(--muted) 60%, transparent);
+  background-color: color-mix(in oklab, var(--muted) 30%, transparent);
+}
+
+.loader-card {
+  background-color: var(--card);
+  border: 1px solid color-mix(in oklab, var(--muted) 100%, transparent);
+  border-radius: var(--radius-sm);
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  padding: 4px;
+
+  overflow: hidden;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  will-change: height, transform;
+}
+
+.loader-card > * {
+  flex-shrink: 0;
+}
+
+@keyframes col1-card-large {
+  0% {
+    transform: translateY(0);
+  }
+
+  6% {
+    height: 22px;
+    transform: translateY(-6px);
+  }
+  9% {
+    height: 25px;
+    transform: translateY(-3px);
+  }
+
+  12% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes col1-card-medium {
+  0% {
+    transform: translateY(0);
+  }
+
+  6% {
+    height: 21px;
+    transform: translateY(-6px);
+  }
+  9% {
+    height: 24px;
+    transform: translateY(-3px);
+  }
+
+  12% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes col1-card-small {
+  0% {
+    transform: translateY(0);
+  }
+
+  6% {
+    height: 14px;
+    transform: translateY(-6px);
+  }
+  9% {
+    height: 16px;
+    transform: translateY(-3px);
+  }
+
+  12% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.col-1-card-1 {
+  animation: col1-card-small 2s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+}
+
+.col-1-card-2 {
+  animation: col1-card-large 2s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+}
+
+.col-1-card-3 {
+  animation: col1-card-medium 2s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+}
+
+@keyframes col2-card-large {
+  0% {
+    transform: translateY(0);
+  }
+
+  6% {
+    height: 31px;
+    transform: translateY(-9px);
+  }
+  9% {
+    height: 34px;
+    transform: translateY(-4px);
+  }
+
+  12% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.col-2-card-1 {
+  animation: col2-card-large 2s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+  animation-delay: 0.4s;
+}
+
+.col-2-card-2 {
+  animation: col2-card-large 2s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+  animation-delay: 0.4s;
+}
+
+@keyframes col3-card-medium {
+  0% {
+    transform: translateY(0);
+  }
+
+  6% {
+    height: 23px;
+    transform: translateY(-6px);
+  }
+  9% {
+    height: 26px;
+    transform: translateY(-3px);
+  }
+
+  12% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes col3-card-small {
+  0% {
+    transform: translateY(0);
+  }
+
+  6% {
+    height: 18px;
+    transform: translateY(-6px);
+  }
+  9% {
+    height: 19px;
+    transform: translateY(-3px);
+  }
+
+  12% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.col-3-card-1 {
+  animation: col3-card-medium 2s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+  animation-delay: 1s;
+}
+
+.col-3-card-2 {
+  animation: col3-card-small 2s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+  animation-delay: 1s;
+}
+
+.col-3-card-3 {
+  animation: col3-card-small 2s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+  animation-delay: 1s;
+}
+
+.loader-card-line-1 {
+  background-color: var(--loader-card-line-color-1);
+  opacity: 0.6;
+}
+
+.loader-card-line-2 {
+  background-color: var(--loader-card-line-color-2);
+  opacity: 0.6;
+}
+
+.loader-card-1 {
+  --loader-card-line-color-1: var(--chart-1);
+  --loader-card-line-color-2: var(--chart-1);
+}
+.loader-card-2 {
+  --loader-card-line-color-1: var(--chart-2);
+  --loader-card-line-color-2: var(--chart-2);
+}
+.loader-card-3 {
+  --loader-card-line-color-1: var(--chart-3);
+  --loader-card-line-color-2: var(--chart-3);
+}
+.loader-card-4 {
+  --loader-card-line-color-1: var(--chart-4);
+  --loader-card-line-color-2: var(--chart-4);
+}
+.loader-card-5 {
+  --loader-card-line-color-1: var(--chart-5);
+  --loader-card-line-color-2: var(--chart-5);
+}
+.loader-card-6 {
+  --loader-card-line-color-1: var(--chart-6);
+  --loader-card-line-color-2: var(--chart-6);
+}

@@ -1,8 +1,0 @@
-fragment BoardListItem on BoardListItem {
-  id
-  name
-  updatedAt
-  cardsCount
-  previewSrc
-  invitedEmails
-}

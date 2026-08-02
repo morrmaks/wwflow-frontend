@@ -1,0 +1,3 @@
+mutation RenameBoard($boardId: ID!, $clientMutationId: ID!, $title: String!) {
+  renameBoard(boardId: $boardId, clientMutationId: $clientMutationId, title: $title)
+}

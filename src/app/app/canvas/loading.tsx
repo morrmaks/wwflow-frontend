@@ -1,9 +1,19 @@
-import { Spinner } from '@/common/ui/spinner';
+import { CanvasSectionSkeleton } from '@src/app/app/canvas';
+import { Skeleton } from '@src/common/ui/skeleton';
 
 export default function CanvasLoading() {
   return (
-    <div className='fixed top-0 left-0 w-full h-full z-50 flex items-center justify-center'>
-      <Spinner className='h-8 w-8' height={32} width={32} />
+    <div className='page-padding pt-8'>
+      <div className='flex justify-between items-center gap-4'>
+        <div className='space-y-3'>
+          <Skeleton className='h-9 w-35' />
+          <Skeleton className='h-4 w-72' />
+        </div>
+
+        <Skeleton className='h-9 w-36 rounded-md' />
+      </div>
+
+      <CanvasSectionSkeleton />
     </div>
   );
 }

@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 
-import { TldrawCanvas } from '@/modules/canvases';
-
-// import 'tldraw/tldraw.css';
+import { TldrawCanvas } from './(tldraw)';
 
 interface Params {
   canvasId: string;

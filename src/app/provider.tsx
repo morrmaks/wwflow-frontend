@@ -1,13 +1,15 @@
-import { ApolloProvider } from '@/common/providers/apolloProvider';
-import { AuthProvider } from '@/common/providers/authProvider';
-import { ThemeProvider } from '@/common/providers/themeProvider';
+import { SoundProvider } from '@src/app/(sound)';
+import { ThemeProvider } from '@src/app/(theme)';
+import { ApolloProvider } from '@src/common/providers';
 
-export function Provider({ children }: { children: React.ReactNode }) {
+function Provider({ children }: { children: React.ReactNode }) {
   return (
     <ApolloProvider>
       <ThemeProvider>
-        <AuthProvider>{children}</AuthProvider>
+        <SoundProvider>{children}</SoundProvider>
       </ThemeProvider>
     </ApolloProvider>
   );
 }
+
+export { Provider };

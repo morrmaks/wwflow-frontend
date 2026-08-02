@@ -4,13 +4,13 @@ import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { CheckIcon } from 'lucide-react';
 import * as React from 'react';
 
-import { cn } from '@/common/lib/utils';
+import { cn } from '@src/common/lib/utils';
 
 function Checkbox({ className, ...props }: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
   return (
     <CheckboxPrimitive.Root
       className={cn(
-        'peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50',
+        'peer size-5 shrink-0 rounded-md border-[3px] border-brutal-outline bg-card text-card-foreground [box-shadow:none] transition-[background-color,border-color,box-shadow,color] duration-150 ease-out outline-none hover:bg-muted focus-visible:[box-shadow:var(--shadow-brutal-sm)] data-[state=checked]:border-brutal-outline data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground aria-invalid:border-destructive aria-invalid:bg-destructive/10 disabled:cursor-not-allowed disabled:opacity-50 disabled:[box-shadow:none]',
         className
       )}
       data-slot='checkbox'
@@ -20,7 +20,7 @@ function Checkbox({ className, ...props }: React.ComponentProps<typeof CheckboxP
         className='grid place-content-center text-current transition-none'
         data-slot='checkbox-indicator'
       >
-        <CheckIcon className='size-3.5' />
+        <CheckIcon className='size-4 stroke-[3]' />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );

@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import { cn } from '@/common/lib/utils';
-import { Input } from '@/common/ui/input';
+import { cn } from '@src/common/lib/utils';
+import { Input } from '@src/common/ui/input';
 
 type NativeInputProps = Omit<
   React.ComponentProps<'input'>,
@@ -75,20 +75,31 @@ function EditableInput({
   };
 
   return (
-    <Input
+    <div
       className={cn(
-        'border-none w-min bg-transparent dark:bg-transparent shadow-none',
-        'transition-all focus:bg-input/30 dark:focus:bg-input/30 hover:bg-primary/10 hover:text-accent-foreground dark:hover:bg-accent/50',
+        'relative inline-grid h-10 min-w-10 max-w-70 rounded-lg border-[3px] border-transparent bg-transparent text-foreground [box-shadow:none]',
+        'transition-[background-color,border-color,box-shadow,color] duration-150 ease-out',
+        'hover:border-brutal-outline hover:bg-card hover:text-card-foreground',
+        'focus-within:border-brutal-outline focus-within:bg-card focus-within:text-card-foreground focus-within:[box-shadow:var(--shadow-brutal-sm)]',
         className
       )}
-      size={Math.max(draft.length, 1)}
-      value={draft}
-      onBlur={submit}
-      onChange={handleChange}
-      onFocus={beginEdit}
-      onKeyDown={handleKeyDown}
-      {...props}
-    />
+    >
+      <span aria-hidden className='invisible whitespace-pre px-4'>
+        {draft || ' '}
+      </span>
+      <Input
+        className={cn(
+          'absolute inset-0 h-full w-full border-0 bg-transparent px-4 py-0 text-current [box-shadow:none] hover:[box-shadow:none] focus-visible:[box-shadow:none] disabled:[box-shadow:none]',
+          'typography-inherit'
+        )}
+        value={draft}
+        onBlur={submit}
+        onChange={handleChange}
+        onFocus={beginEdit}
+        onKeyDown={handleKeyDown}
+        {...props}
+      />
+    </div>
   );
 }
 

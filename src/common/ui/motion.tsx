@@ -5,6 +5,8 @@ import { useIntersectionObserver } from '@siberiacancode/reactuse';
 import clsx from 'clsx';
 import { useRef } from 'react';
 
+import styles from './motion.module.css';
+
 interface BaseMotionProps {
   children: React.ReactNode;
   className?: string;
@@ -32,17 +34,19 @@ interface RevealProps extends BaseMotionProps {
 }
 
 function MotionReveal({ direction = 'up', once, className, children }: RevealProps) {
+  const directionClassName = {
+    down: styles.revealDown,
+    left: styles.revealLeft,
+    right: styles.revealRight,
+    up: styles.revealUp
+  }[direction];
+
   return (
     <MotionPrimitive once={once}>
       {({ ref, isActive }) => (
         <Slot
           ref={ref}
-          className={clsx(
-            'motion-reveal',
-            `motion-reveal-${direction}`,
-            isActive && 'is-active',
-            className
-          )}
+          className={clsx(styles.reveal, directionClassName, isActive && styles.active, className)}
         >
           {children}
         </Slot>
@@ -57,7 +61,7 @@ function MotionFade({ once, className, children }: FadeProps) {
   return (
     <MotionPrimitive once={once}>
       {({ ref, isActive }) => (
-        <Slot ref={ref} className={clsx('motion-fade', isActive && 'is-active', className)}>
+        <Slot ref={ref} className={clsx(styles.fade, isActive && styles.active, className)}>
           {children}
         </Slot>
       )}

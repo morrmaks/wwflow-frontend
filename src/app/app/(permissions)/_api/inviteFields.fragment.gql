@@ -1,0 +1,7 @@
+fragment InviteFields on Invite {
+  id
+  email
+  role
+  expiresAt
+  canRevoke
+}

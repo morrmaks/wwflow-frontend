@@ -1,0 +1,5 @@
+query CanvasPermissions($canvasId: ID!) {
+  canvasPermissions(canvasId: $canvasId) {
+    ...CanvasPermissionsFields
+  }
+}

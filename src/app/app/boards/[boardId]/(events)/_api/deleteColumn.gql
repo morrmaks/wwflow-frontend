@@ -1,0 +1,3 @@
+mutation DeleteColumn($boardId: ID!, $clientMutationId: ID!, $columnId: ID!) {
+  deleteColumn(boardId: $boardId, clientMutationId: $clientMutationId, columnId: $columnId)
+}

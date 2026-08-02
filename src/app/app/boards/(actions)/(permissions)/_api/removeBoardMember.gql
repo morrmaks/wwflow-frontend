@@ -1,0 +1,7 @@
+mutation RemoveBoardMember($memberId: ID!) {
+  removeBoardMember(memberId: $memberId) {
+    resourceId
+    removedMemberId
+    removedWasSelf
+  }
+}

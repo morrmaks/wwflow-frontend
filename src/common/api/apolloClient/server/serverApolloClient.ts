@@ -1,6 +1,5 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import fetch from 'cross-fetch';
-import process from 'node:process';
 
 function createServerApolloClient(cookie?: string) {
   return new ApolloClient({

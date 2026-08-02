@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogSeparator,
   DialogTitle
-} from '@/common/ui/dialog';
+} from '@src/common/ui/dialog';
 
 import { Button } from './button';
 

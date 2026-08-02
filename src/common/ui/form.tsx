@@ -7,8 +7,8 @@ import { Slot } from '@radix-ui/react-slot';
 import * as React from 'react';
 import { Controller, FormProvider, useFormContext, useFormState } from 'react-hook-form';
 
-import { cn } from '@/common/lib/utils';
-import { Label } from '@/common/ui/label';
+import { cn } from '@src/common/lib/utils';
+import { Label } from '@src/common/ui/label';
 
 const Form = FormProvider;
 
@@ -78,7 +78,7 @@ function FormLabel({ className, ...props }: React.ComponentProps<typeof LabelPri
 
   return (
     <Label
-      className={cn('data-[error=true]:text-destructive', className)}
+      className={cn('data-[error=true]:text-toast-error', className)}
       data-error={!!error}
       data-slot='form-label'
       htmlFor={formItemId}
@@ -106,7 +106,7 @@ function FormDescription({ className, ...props }: React.ComponentProps<'p'>) {
 
   return (
     <p
-      className={cn('text-muted-foreground text-sm', className)}
+      className={cn('text-sm text-muted-foreground', className)}
       id={formDescriptionId}
       data-slot='form-description'
       {...props}
@@ -124,7 +124,10 @@ function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
 
   return (
     <p
-      className={cn('text-destructive text-sm', className)}
+      className={cn(
+        'w-fit rounded-lg border-[3px] border-brutal-outline bg-toast-error px-2 py-1 text-sm font-medium text-toast-error-foreground',
+        className
+      )}
       id={formMessageId}
       data-slot='form-message'
       {...props}

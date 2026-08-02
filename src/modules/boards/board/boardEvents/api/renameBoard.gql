@@ -1,3 +1,0 @@
-mutation RenameBoard($boardId: ID!, $title: String!) {
-  renameBoard(boardId: $boardId, title: $title)
-}

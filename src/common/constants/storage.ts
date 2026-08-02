@@ -1,5 +1,8 @@
-const COOKIE_KEYS = {
-  accessToken: 'accessToken'
+const COOKIE_TOKEN_KEYS = {
+  accessToken: 'accessToken',
+  refreshToken: 'refreshToken'
 } as const;
 
-export { COOKIE_KEYS };
+const COOKIE_THEME_KEY = 'theme';
+
+export { COOKIE_THEME_KEY, COOKIE_TOKEN_KEYS };

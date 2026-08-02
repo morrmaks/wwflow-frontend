@@ -1,0 +1,8 @@
+mutation ChangeBoardMemberRole($input: ChangeMemberRoleInput!) {
+  changeBoardMemberRole(input: $input) {
+    boardId
+    updatedMembers {
+      ...BoardMemberFields
+    }
+  }
+}

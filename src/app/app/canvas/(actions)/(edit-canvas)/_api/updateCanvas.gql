@@ -1,0 +1,7 @@
+mutation UpdateCanvas($canvasId: ID!, $input: UpdateCanvasInput!) {
+  updateCanvas(canvasId: $canvasId, input: $input) {
+    id
+    title
+    previewUrl
+  }
+}

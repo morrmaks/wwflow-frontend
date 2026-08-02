@@ -1,0 +1,134 @@
+@import 'tldraw/tldraw.css';
+
+.tl-container .tl-watermark_SEE-LICENSE {
+  display: none !important;
+}
+
+.tl-theme__light {
+  /* Canvas */
+  --tl-color-snap: hsl(0, 76%, 60%);
+  --tl-color-selection-fill: hsl(210, 100%, 56%, 24%);
+  --tl-color-selection-stroke: hsl(214, 84%, 56%);
+  --tl-color-background: hsl(210, 20%, 98%);
+  --tl-color-brush-fill: hsl(0, 0%, 56%, 10.2%);
+  --tl-color-brush-stroke: hsl(0, 0%, 56%, 25.1%);
+  --tl-color-grid: hsl(0, 0%, 43%);
+
+  /* UI */
+  --tl-color-low: var(--card);
+  --tl-color-low-border: var(--border);
+  --tl-color-culled: hsl(204, 14%, 93%);
+  --tl-color-muted-none: hsl(0, 0%, 0%, 0%);
+  --tl-color-muted-0: hsl(0, 0%, 0%, 2%);
+  --tl-color-muted-1: hsl(0, 0%, 0%, 10%);
+  --tl-color-muted-2: hsl(0, 0%, 0%, 4.3%);
+  --tl-color-hint: hsl(0, 0%, 0%, 5.5%);
+  --tl-color-overlay: hsl(0, 0%, 0%, 20%);
+  --tl-color-divider: var(--border);
+
+  --tl-color-panel: var(--card);
+  --tl-color-panel-contrast: var(--border);
+  --tl-color-panel-overlay: var(--popover);
+  --tl-color-panel-transparent: transparent;
+
+  --tl-color-selected: hsl(214, 84%, 56%);
+  --tl-color-selected-contrast: hsl(0, 0%, 100%);
+  --tl-color-focus: hsl(219, 65%, 50%);
+  --tl-color-tooltip: hsla(200, 14%, 4%, 1);
+
+  /* Text */
+  --tl-color-text: var(--foreground);
+  --tl-color-text-0: var(--foreground);
+  --tl-color-text-1: var(--muted-foreground);
+  --tl-color-text-3: var(--muted-foreground);
+  --tl-color-text-shadow: hsl(0, 0%, 100%);
+  --tl-color-text-highlight: hsl(52, 100%, 50%);
+  --tl-color-text-highlight-p3: color(display-p3 0.972 0.8205 0.05);
+
+  /* Named */
+  --tl-color-primary: hsl(214, 84%, 56%);
+  --tl-color-success: hsl(123, 46%, 34%);
+  --tl-color-info: hsl(201, 98%, 41%);
+  --tl-color-warning: hsl(27, 98%, 47%);
+  --tl-color-danger: hsl(0, 90%, 43%);
+  --tl-color-laser: hsl(0, 100%, 50%);
+
+  /* Shadows */
+  --tl-shadow-1: 0px 1px 2px hsl(0, 0%, 0%, 25%), 0px 1px 3px hsl(0, 0%, 0%, 9%);
+  --tl-shadow-2:
+    0px 0px 2px hsl(0, 0%, 0%, 16%), 0px 2px 3px hsl(0, 0%, 0%, 24%),
+    0px 2px 6px hsl(0, 0%, 0%, 0.1), inset 0px 0px 0px 1px var(--tl-color-panel-contrast);
+  --tl-shadow-3:
+    0px 1px 2px hsl(0, 0%, 0%, 28%), 0px 2px 6px hsl(0, 0%, 0%, 14%),
+    inset 0px 0px 0px 1px var(--tl-color-panel-contrast);
+  --tl-shadow-4:
+    0px 0px 3px hsl(0, 0%, 0%, 19%), 0px 5px 4px hsl(0, 0%, 0%, 16%),
+    0px 2px 16px hsl(0, 0%, 0%, 6%), inset 0px 0px 0px 1px var(--tl-color-panel-contrast);
+
+  --tl-radius-2: var(--radius-sm);
+  --tl-radius-3: var(--radius-md);
+}
+
+.tl-theme__dark {
+  /* Canvas */
+  --tl-color-snap: hsl(0, 76%, 60%);
+  --tl-color-selection-fill: hsl(209, 100%, 57%, 20%);
+  --tl-color-selection-stroke: hsl(214, 84%, 56%);
+  --tl-color-background: hsl(240, 5%, 6.5%);
+  --tl-color-brush-fill: hsl(0, 0%, 71%, 5.1%);
+  --tl-color-brush-stroke: hsl(0, 0%, 71%, 25.1%);
+  --tl-color-grid: hsl(0, 0%, 40%);
+
+  /* UI */
+  --tl-color-low: var(--card);
+  --tl-color-low-border: var(--border);
+  --tl-color-culled: hsl(210, 11%, 19%);
+  --tl-color-muted-none: hsl(0, 0%, 100%, 0%);
+  --tl-color-muted-0: hsl(0, 0%, 100%, 2%);
+  --tl-color-muted-1: hsl(0, 0%, 100%, 10%);
+  --tl-color-muted-2: hsl(0, 0%, 100%, 5%);
+  --tl-color-hint: hsl(0, 0%, 100%, 7%);
+  --tl-color-overlay: hsl(0, 0%, 0%, 50%);
+  --tl-color-divider: var(--border);
+
+  --tl-color-panel: var(--card);
+  --tl-color-panel-contrast: var(--border);
+  --tl-color-panel-overlay: var(--popover);
+  --tl-color-panel-transparent: transparent;
+
+  --tl-color-selected: hsl(217, 89%, 61%);
+  --tl-color-selected-contrast: hsl(0, 0%, 100%);
+  --tl-color-focus: hsl(217, 76%, 80%);
+  --tl-color-tooltip: hsla(0, 0%, 100%, 1);
+
+  /* Text */
+  --tl-color-text: var(--foreground);
+  --tl-color-text-0: var(--foreground);
+  --tl-color-text-1: var(--muted-foreground);
+  --tl-color-text-3: var(--muted-foreground);
+  --tl-color-text-shadow: hsl(210, 13%, 18%);
+  --tl-color-text-highlight: hsl(52, 100%, 41%);
+  --tl-color-text-highlight-p3: color(display-p3 0.8078 0.6225 0.0312);
+
+  /* Named */
+  --tl-color-primary: hsl(214, 84%, 56%);
+  --tl-color-success: hsl(123, 38%, 57%);
+  --tl-color-info: hsl(199, 92%, 56%);
+  --tl-color-warning: hsl(36, 100%, 57%);
+  --tl-color-danger: hsl(0, 82%, 66%);
+  --tl-color-laser: hsl(0, 100%, 50%);
+
+  /* Shadows */
+  --tl-shadow-1:
+    0px 1px 2px hsl(0, 0%, 0%, 16.1%), 0px 1px 3px hsl(0, 0%, 0%, 22%),
+    inset 0px 0px 0px 1px var(--tl-color-panel-contrast);
+  --tl-shadow-2:
+    0px 1px 3px hsl(0, 0%, 0%, 66.6%), 0px 2px 6px hsl(0, 0%, 0%, 33%),
+    inset 0px 0px 0px 1px var(--tl-color-panel-contrast);
+  --tl-shadow-3:
+    0px 1px 3px hsl(0, 0%, 0%, 50%), 0px 2px 12px hsl(0, 0%, 0%, 50%),
+    inset 0px 0px 0px 1px var(--tl-color-panel-contrast);
+
+  --tl-radius-2: var(--radius-sm);
+  --tl-radius-3: var(--radius-md);
+}

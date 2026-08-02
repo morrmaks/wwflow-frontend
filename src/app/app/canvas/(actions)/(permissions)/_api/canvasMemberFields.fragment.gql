@@ -1,0 +1,11 @@
+fragment CanvasMemberFields on CanvasMember {
+  id
+  role
+  isSelf
+  canRemove
+  canChangeRole
+  availableRoles
+  user {
+    ...UserFields
+  }
+}

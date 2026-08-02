@@ -1,4 +1,4 @@
-import { PrivateGuard } from '@/common/guards/privateGuard';
+import { PrivateGuard } from '@src/common/guards/privateGuard';
 
 export default function AppLayout({
   children

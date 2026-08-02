@@ -1,6 +1,0 @@
-mutation UpdateCanvasInvites($canvasId: ID!, $add: [String!]!, $remove: [String!]!) {
-  updateCanvasInvites(canvasId: $canvasId, add: $add, remove: $remove) {
-    id
-    invitedEmails
-  }
-}

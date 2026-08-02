@@ -1,0 +1,154 @@
+@layer base {
+  html {
+    min-height: 100%;
+    overflow-x: clip;
+    isolation: isolate;
+    position: relative;
+  }
+
+  html::before,
+  html::after {
+    position: fixed;
+    inset: -10vmax;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 700ms ease;
+    transform: translate3d(0, 0, 0);
+    content: '';
+    will-change: transform, opacity;
+    z-index: -1;
+  }
+
+  html::before {
+    background:
+      radial-gradient(
+        circle at 8% 17%,
+        #fff 0 1px,
+        rgba(126, 231, 255, 0.28) 1px 3px,
+        transparent 4px
+      ),
+      radial-gradient(circle at 21% 43%, rgba(255, 255, 255, 0.68) 0 1px, transparent 2px),
+      radial-gradient(circle at 37% 12%, rgba(255, 255, 255, 0.8) 0 1px, transparent 2px),
+      radial-gradient(circle at 58% 31%, rgba(255, 255, 255, 0.72) 0 1px, transparent 2px),
+      radial-gradient(
+        circle at 83% 19%,
+        #fff 0 1px,
+        rgba(126, 231, 255, 0.24) 1px 3px,
+        transparent 4px
+      ),
+      radial-gradient(circle at 91% 54%, rgba(255, 255, 255, 0.62) 0 1px, transparent 2px),
+      radial-gradient(circle at 4% 73%, rgba(255, 255, 255, 0.72) 0 1px, transparent 2px),
+      radial-gradient(circle at 31% 86%, rgba(255, 255, 255, 0.78) 0 1px, transparent 2px),
+      radial-gradient(circle at 49% 18%, rgba(126, 231, 255, 0.64) 0 1px, transparent 2px),
+      radial-gradient(circle at 67% 72%, rgba(255, 255, 255, 0.7) 0 1px, transparent 2px),
+      radial-gradient(circle at 78% 47%, rgba(255, 255, 255, 0.58) 0 1px, transparent 2px),
+      radial-gradient(circle at 97% 8%, rgba(255, 255, 255, 0.8) 0 1px, transparent 2px),
+      radial-gradient(circle at 13% 68%, rgba(126, 231, 255, 0.72) 0 1px, transparent 2px),
+      radial-gradient(circle at 29% 24%, rgba(255, 255, 255, 0.8) 0 1px, transparent 2px),
+      radial-gradient(circle at 46% 77%, rgba(255, 255, 255, 0.66) 0 1px, transparent 2px),
+      radial-gradient(circle at 64% 9%, rgba(126, 231, 255, 0.76) 0 1px, transparent 2px),
+      radial-gradient(circle at 74% 61%, rgba(255, 255, 255, 0.74) 0 1px, transparent 2px),
+      radial-gradient(circle at 96% 34%, rgba(255, 255, 255, 0.7) 0 1px, transparent 2px);
+  }
+
+  html::after {
+    background:
+      radial-gradient(
+        circle at 6% 49%,
+        #fff 0 1.5px,
+        rgba(126, 231, 255, 0.22) 1.5px 4px,
+        transparent 5px
+      ),
+      radial-gradient(circle at 18% 9%, rgba(255, 255, 255, 0.58) 0 1px, transparent 2px),
+      radial-gradient(circle at 33% 58%, rgba(255, 255, 255, 0.76) 0 1px, transparent 2px),
+      radial-gradient(circle at 52% 46%, rgba(126, 231, 255, 0.62) 0 1px, transparent 2px),
+      radial-gradient(circle at 69% 83%, rgba(255, 255, 255, 0.72) 0 1px, transparent 2px),
+      radial-gradient(
+        circle at 88% 72%,
+        #fff 0 1.5px,
+        rgba(126, 231, 255, 0.2) 1.5px 4px,
+        transparent 5px
+      ),
+      radial-gradient(circle at 9% 94%, rgba(255, 255, 255, 0.62) 0 1px, transparent 2px),
+      radial-gradient(circle at 23% 31%, rgba(126, 231, 255, 0.68) 0 1px, transparent 2px),
+      radial-gradient(circle at 39% 38%, rgba(255, 255, 255, 0.7) 0 1px, transparent 2px),
+      radial-gradient(circle at 48% 8%, rgba(255, 255, 255, 0.84) 0 1px, transparent 2px),
+      radial-gradient(circle at 62% 96%, rgba(255, 255, 255, 0.56) 0 1px, transparent 2px),
+      radial-gradient(circle at 76% 14%, rgba(255, 255, 255, 0.74) 0 1px, transparent 2px),
+      radial-gradient(circle at 94% 49%, rgba(126, 231, 255, 0.6) 0 1px, transparent 2px),
+      radial-gradient(circle at 71% 55%, rgba(255, 255, 255, 0.78) 0 1px, transparent 2px),
+      radial-gradient(circle at 11% 83%, rgba(255, 255, 255, 0.72) 0 1px, transparent 2px),
+      radial-gradient(circle at 24% 74%, rgba(126, 231, 255, 0.7) 0 1px, transparent 2px),
+      radial-gradient(circle at 42% 19%, rgba(255, 255, 255, 0.88) 0 1px, transparent 2px),
+      radial-gradient(circle at 57% 69%, rgba(255, 255, 255, 0.58) 0 1px, transparent 2px);
+  }
+
+  html.dark::before {
+    opacity: 0.62;
+    animation: stars-soft-twinkle 6s ease-in-out infinite;
+  }
+
+  html.dark::after {
+    opacity: 0.82;
+    animation: stars-soft-twinkle 9s ease-in-out infinite reverse;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  html.dark::before {
+    animation-name: stars-soft-twinkle, stars-scroll-parallax-far;
+    animation-duration: 6s, 1ms;
+    animation-timing-function: ease-in-out, linear;
+    animation-iteration-count: infinite, 1;
+    animation-fill-mode: none, both;
+    animation-timeline: auto, scroll(root block);
+  }
+
+  html.dark::after {
+    animation-name: stars-soft-twinkle, stars-scroll-parallax-near;
+    animation-duration: 9s, 1ms;
+    animation-timing-function: ease-in-out, linear;
+    animation-iteration-count: infinite, 1;
+    animation-direction: reverse, normal;
+    animation-fill-mode: none, both;
+    animation-timeline: auto, scroll(root block);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.dark::before,
+  html.dark::after {
+    animation: none;
+  }
+}
+
+@keyframes stars-soft-twinkle {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes stars-scroll-parallax-far {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -7vmax, 0);
+  }
+}
+
+@keyframes stars-scroll-parallax-near {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -14vmax, 0);
+  }
+}

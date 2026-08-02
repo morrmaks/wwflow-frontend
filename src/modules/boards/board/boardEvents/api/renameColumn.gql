@@ -1,3 +1,0 @@
-mutation RenameColumn($boardId: ID!, $columnId: ID!, $title: String!) {
-  renameColumn(boardId: $boardId, columnId: $columnId, title: $title)
-}

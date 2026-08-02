@@ -1,0 +1,11 @@
+fragment BoardMemberFields on BoardMember {
+  id
+  role
+  isSelf
+  canRemove
+  canChangeRole
+  availableRoles
+  user {
+    ...UserFields
+  }
+}
